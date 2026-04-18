@@ -1,0 +1,95 @@
+@import "tailwindcss";
+
+@theme {
+  --font-family-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-family-display: "Syne", ui-sans-serif, system-ui, sans-serif;
+  --font-family-serif: "Instrument Serif", ui-serif, Georgia, serif;
+
+  --color-canvas: #0b0b0d;
+  --color-canvas-elevated: #12121a;
+  --color-paper: #f3f3f5;
+  --color-muted: #9ca3af;
+  --color-accent-violet: #8b5cf6;
+  --color-accent-fuchsia: #ec4899;
+  --color-accent-cyan: #06b6d4;
+
+  --shadow-glow: 0 0 80px color-mix(in oklab, var(--color-accent-violet) 35%, transparent);
+}
+
+@utility font-display {
+  font-family: var(--font-family-display);
+}
+
+@utility font-serif {
+  font-family: var(--font-family-serif);
+}
+
+@utility text-balance {
+  text-wrap: balance;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-reverse {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes blob {
+  0%,
+  100% {
+    border-radius: 42% 58% 63% 37% / 41% 44% 56% 59%;
+    transform: translate(0, 0) rotate(0deg);
+  }
+  33% {
+    border-radius: 62% 38% 39% 61% / 52% 63% 37% 48%;
+    transform: translate(20px, -10px) rotate(40deg);
+  }
+  66% {
+    border-radius: 48% 52% 68% 32% / 62% 38% 62% 38%;
+    transform: translate(-18px, 18px) rotate(-30deg);
+  }
+}
+
+@keyframes sheen {
+  0% {
+    transform: translateX(-120%);
+  }
+  100% {
+    transform: translateX(180%);
+  }
+}
+
+@utility animate-blob {
+  animation: blob 22s ease-in-out infinite;
+}
+
+@layer base {
+  html {
+    scroll-behavior: auto;
+  }
+
+  body {
+    @apply bg-canvas text-zinc-100 antialiased;
+    font-family: var(--font-family-sans);
+    font-feature-settings:
+      "ss01" on,
+      "cv02" on;
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--color-accent-fuchsia) 45%, transparent);
+    color: white;
+  }
+}

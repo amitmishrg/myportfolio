@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" fill="none">
+  <rect width="1200" height="800" fill="#12121a"/>
+  <rect x="80" y="80" width="1040" height="640" rx="24" fill="url(#d)" stroke="rgba(255,255,255,0.08)"/>
+  <defs>
+    <linearGradient id="d" x1="0" y1="400" x2="1200" y2="400" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#a855f7" stop-opacity="0.2"/>
+      <stop offset="0.5" stop-color="#06b6d4" stop-opacity="0.15"/>
+      <stop offset="1" stop-color="#ec4899" stop-opacity="0.12"/>
+    </linearGradient>
+  </defs>
+  <text x="600" y="410" text-anchor="middle" fill="rgba(255,255,255,0.35)" font-family="system-ui" font-size="28" font-weight="600">Project image</text>
+</svg>

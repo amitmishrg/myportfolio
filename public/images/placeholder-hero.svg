@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="900" viewBox="0 0 720 900" fill="none">
+  <defs>
+    <linearGradient id="g" x1="120" y1="80" x2="620" y2="820" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#8b5cf6" stop-opacity="0.35"/>
+      <stop offset="0.5" stop-color="#ec4899" stop-opacity="0.25"/>
+      <stop offset="1" stop-color="#06b6d4" stop-opacity="0.2"/>
+    </linearGradient>
+    <radialGradient id="r" cx="0" cy="0" r="1" gradientTransform="translate(360 420) rotate(90) scale(420 360)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#12121a"/>
+      <stop offset="1" stop-color="#0b0b0d"/>
+    </radialGradient>
+  </defs>
+  <rect width="720" height="900" fill="url(#r)"/>
+  <rect x="60" y="100" width="600" height="700" rx="32" fill="url(#g)" stroke="rgba(255,255,255,0.08)"/>
+  <text x="360" y="460" text-anchor="middle" fill="rgba(255,255,255,0.45)" font-family="system-ui, sans-serif" font-size="22" font-weight="600">Portrait placeholder</text>
+  <text x="360" y="500" text-anchor="middle" fill="rgba(255,255,255,0.25)" font-family="system-ui, sans-serif" font-size="14">Replace with your photo</text>
+</svg>
