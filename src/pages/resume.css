@@ -26,6 +26,32 @@
   font-family: var(--resume-font) !important;
 }
 
+/* ---------------------------- Links ------------------------------------
+   Anchors should be fully clickable but visually invisible — typography
+   should read identically to the surrounding text. On hover we add a
+   subtle accent underline; in print we strip it back to plain text. */
+.resume-link,
+.resume-link:link,
+.resume-link:visited,
+.resume-link:active {
+  color: inherit;
+  text-decoration: none;
+}
+
+.resume-link:hover,
+.resume-link:focus-visible {
+  text-decoration: underline;
+  text-decoration-color: var(--resume-accent);
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 2px;
+}
+
+.resume-link:focus-visible {
+  outline: 2px solid var(--resume-accent);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
 .resume-root {
   display: flex;
   flex-direction: column;
@@ -99,7 +125,7 @@
 
 /* ---------------------------- Page (A4) --------------------------------- */
 .resume-page {
-  width: 595px; /* A4 width at 72dpi */
+  width: 785px; /* A4 width at 72dpi */
   min-height: 842px; /* A4 height at 72dpi */
   background: var(--resume-paper);
   padding: 44px 52px 28px;
@@ -109,7 +135,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 14px;
   overflow: hidden;
 }
 
@@ -244,8 +270,6 @@
   font-weight: 700;
   color: var(--resume-ink);
   line-height: 1.35;
-  /* Template stacks multi-word labels (Work / Experience). Force one word per line. */
-  word-spacing: 100vw;
 }
 
 .resume-section-sub {
@@ -272,7 +296,7 @@
 .resume-section-body {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 8px;
   min-width: 0;
 }
 
@@ -499,38 +523,92 @@
   width: 5px;
   height: 5px;
   border-radius: 50%;
-  background: var(--resume-ink);
+  background: var(--resume-accent);
+}
+
+/* ---------------------------- Open Source ------------------------------ */
+.resume-os {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.resume-os-item {
+  font-size: 8.5px;
+  line-height: 1.45;
+  color: var(--resume-zinc-800);
+}
+
+.resume-os-link {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: baseline;
+  gap: 14px;
+}
+
+.resume-os-text {
+  min-width: 0;
+}
+
+.resume-os-name {
+  font-weight: 700;
+  color: var(--resume-ink);
+}
+
+.resume-os-sep {
+  color: var(--resume-zinc-500);
+  font-weight: 500;
+}
+
+.resume-os-tagline {
+  font-weight: 500;
+  color: var(--resume-zinc-700);
+}
+
+.resume-os-meta {
+  font-size: 8px;
+  font-weight: 600;
+  color: var(--resume-zinc-700);
+  letter-spacing: 0.01em;
+  white-space: nowrap;
 }
 
 /* ---------------------------- Interests -------------------------------- */
+/* Compact inline row: tiny accent dot + label, all on one line. Saves the
+   vertical space the bubble layout was eating so we can fit Open Source. */
 .resume-interests {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  align-items: center;
+  gap: 18px;
   padding-top: 2px;
 }
 
 .resume-interest-item {
-  display: flex;
-  flex-direction: column;
+  display: inline-flex;
+  flex-direction: row;
   align-items: center;
-  gap: 4px;
-  min-width: 48px;
+  gap: 6px;
+  min-width: 0;
 }
 
 .resume-interest-bubble {
-  width: 36px;
-  height: 36px;
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
   background: var(--resume-accent);
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
 }
 
 .resume-interest-icon {
-  width: 17px;
-  height: 17px;
+  width: 11px;
+  height: 11px;
   color: white;
 }
 
@@ -538,8 +616,8 @@
   font-size: 8.5px;
   font-weight: 500;
   color: var(--resume-ink);
-  text-align: center;
-  line-height: 1.3;
+  line-height: 1;
+  white-space: nowrap;
 }
 
 /* ---------------------------- Footer ----------------------------------- */
@@ -549,7 +627,7 @@
   justify-content: center;
   align-items: center;
   gap: 26px;
-  padding-top: 17px;
+  padding-top: 12px;
   border-top: 1px solid var(--resume-zinc-200);
   font-size: 8.5px;
   font-weight: 600;
@@ -594,7 +672,7 @@
     width: 100%;
     min-height: 100vh;
     padding: 36px 52px 26px;
-    gap: 18px;
+    gap: 14px;
     page-break-after: auto;
     break-after: auto;
   }
@@ -603,5 +681,14 @@
   * {
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
+  }
+
+  /* Clickable URLs in the PDF too — but keep the typography plain. */
+  .resume-link,
+  .resume-link:hover,
+  .resume-link:focus-visible {
+    color: inherit !important;
+    text-decoration: none !important;
+    outline: none !important;
   }
 }

@@ -1,5 +1,5 @@
 import { useEffect } from "react"
-import { Github, Globe, Linkedin, Mail, Phone, Twitter, Waves } from "lucide-react"
+import { Github, Globe, Linkedin, Mail, Music, Phone, Twitter, Waves } from "lucide-react"
 import { site } from "../data/site"
 import "./resume.css"
 
@@ -143,33 +143,47 @@ function SectionRow({
   )
 }
 
-function ContactCell({ Icon, label, value }: { Icon: IconCmp; label: string; value: string }) {
+function ContactCell({
+  Icon,
+  label,
+  value,
+  href,
+}: {
+  Icon: IconCmp
+  label: string
+  value: string
+  href?: string
+}) {
+  const Wrapper: React.ElementType = href ? "a" : "div"
+  const wrapperProps = href
+    ? { href, target: href.startsWith("http") ? "_blank" : undefined, rel: "noreferrer" }
+    : {}
   return (
-    <div className="resume-contact-cell">
+    <Wrapper className="resume-contact-cell resume-link" {...wrapperProps}>
       <Icon className="resume-contact-icon" strokeWidth={1.5} />
       <div className="resume-contact-text">
         <div className="resume-contact-label">{label}</div>
         <div className="resume-contact-value">{value}</div>
       </div>
-    </div>
+    </Wrapper>
   )
 }
 
 // All 12 entries from `site.skills`, split into two balanced columns.
 // Kept in order of where I spend the most hours so the bar weights read honestly.
 const skillsFrontend: Array<[string, number]> = [
-  ["React", 98],
-  ["TypeScript", 96],
-  ["Next.js", 93],
+  ["React", 90],
+  ["TypeScript", 85],
+  ["Next.js", 85],
   ["Tailwind", 95],
-  ["Node.js", 88],
+  ["Node.js", 80],
   ["Storybook", 85],
 ]
 
 const skillsAiTooling: Array<[string, number]> = [
-  ["Claude SDK", 94],
-  ["MCP", 93],
-  ["AI-SDK", 92],
+  ["Claude SDK", 90],
+  ["MCP", 85],
+  ["AI-SDK", 80],
   ["Vite / Webpack", 86],
   ["Jest", 82],
   ["Figma", 88],
@@ -185,7 +199,6 @@ function SkillList({ title, items }: { title: string; items: Array<[string, numb
             <div className="resume-skill-name">{name}</div>
             <div className="resume-skill-bar" aria-hidden>
               <span className="resume-skill-fill" style={{ width: `${level}%` }} />
-              <span className="resume-skill-dot" />
             </div>
           </div>
         ))}
@@ -198,6 +211,7 @@ const interests: Array<{ icon: IconCmp; label: string }> = [
   { icon: CricketIcon, label: "Cricket" },
   { icon: TableTennisIcon, label: "Table Tennis" },
   { icon: Waves, label: "Swimming" },
+  { icon: Music, label: "Music" },
 ]
 
 function Interests() {
@@ -212,6 +226,44 @@ function Interests() {
         </div>
       ))}
     </div>
+  )
+}
+
+/* -------- Open-source row.
+   One line per project: bold name → tagline → meta badge on the right.
+   Resume-tightened taglines (the data/site.ts copies are written for the
+   long-form portfolio page; here we want crisp single-liners). */
+const openSourceTaglines: Record<string, string> = {
+  AgenticLens: "Visualize and debug AI agent workflows.",
+  "code-resume": "Offline-first resume builder with PDF export.",
+  Picksy: "Two-choice social voting with a personalised trending feed.",
+  "WebMCP ShopQuick": "Shopping cart exposed as AI tools via WebMCP.",
+}
+
+function metaForProject(p: (typeof site.openSource.projects)[number]): string {
+  // Strip protocol/`www.` so URLs read as plain domains in print.
+  const display = p.href.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "")
+  if (p.meta.kind === "live") return `Live · ${display}`
+  if (p.meta.kind === "stars") return `${p.meta.label} · ${display}`
+  return display
+}
+
+function OpenSourceList() {
+  return (
+    <ul className="resume-os">
+      {site.openSource.projects.map((p) => (
+        <li key={p.name} className="resume-os-item">
+          <a className="resume-os-link resume-link" href={p.href} target="_blank" rel="noreferrer">
+            <span className="resume-os-text">
+              <span className="resume-os-name">{p.name}</span>
+              <span className="resume-os-sep"> — </span>
+              <span className="resume-os-tagline">{openSourceTaglines[p.name] ?? p.tagline}</span>
+            </span>
+            <span className="resume-os-meta">{metaForProject(p)}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
   )
 }
 
@@ -251,9 +303,19 @@ export function ResumePage() {
             </div>
           </div>
           <div className="resume-header-right">
-            <ContactCell Icon={Phone} label="Phone" value={site.phone} />
-            <ContactCell Icon={Mail} label="Email" value={site.email} />
-            <ContactCell Icon={Globe} label="Website" value="amitmishrg.in" />
+            <ContactCell
+              Icon={Phone}
+              label="Phone"
+              value={site.phone}
+              href={`tel:${site.phone.replace(/\s+/g, "")}`}
+            />
+            <ContactCell
+              Icon={Mail}
+              label="Email"
+              value={site.email}
+              href={`mailto:${site.email}`}
+            />
+            <ContactCell Icon={Globe} label="Website" value="amitmishrg.in" href={site.url} />
           </div>
         </header>
 
@@ -277,9 +339,7 @@ export function ResumePage() {
                 alt={`${site.name} portrait`}
                 className="resume-portrait"
               />
-              <p className="resume-paragraph">
-                {site.hero.subline} I care about the person who reads the code next.
-              </p>
+              <p className="resume-paragraph">{site.hero.subline}</p>
             </div>
           </div>
         </SectionRow>
@@ -328,6 +388,14 @@ export function ResumePage() {
           </div>
         </SectionRow>
 
+        <SectionRow label="Open Source">
+          <div className="resume-job-rule" aria-hidden>
+            <span className="resume-job-rule-grey" />
+            <span className="resume-job-rule-accent" />
+          </div>
+          <OpenSourceList />
+        </SectionRow>
+
         <SectionRow label="Interests">
           <div className="resume-job-rule" aria-hidden>
             <span className="resume-job-rule-grey" />
@@ -337,18 +405,33 @@ export function ResumePage() {
         </SectionRow>
 
         <footer className="resume-footer">
-          <span className="resume-footer-item">
+          <a
+            className="resume-footer-item resume-link"
+            href={site.social.github}
+            target="_blank"
+            rel="noreferrer"
+          >
             <Github className="resume-footer-icon" strokeWidth={1.6} fill="currentColor" />
             github.com/amitmishrg
-          </span>
-          <span className="resume-footer-item">
+          </a>
+          <a
+            className="resume-footer-item resume-link"
+            href={site.social.linkedin}
+            target="_blank"
+            rel="noreferrer"
+          >
             <Linkedin className="resume-footer-icon" strokeWidth={1.6} fill="currentColor" />
             linkedin.com/in/amitmishrg
-          </span>
-          <span className="resume-footer-item">
+          </a>
+          <a
+            className="resume-footer-item resume-link"
+            href={site.social.twitter}
+            target="_blank"
+            rel="noreferrer"
+          >
             <Twitter className="resume-footer-icon" strokeWidth={1.6} fill="currentColor" />
             @amitmishrg
-          </span>
+          </a>
         </footer>
       </article>
     </div>

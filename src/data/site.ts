@@ -122,13 +122,15 @@ export const site = {
       summary:
         "Leading frontend for an AI-native ERP — Talos chat, the Axm Design System MCP, agentic product UIs, and the glue that ties it all together.",
       highlights: [
-        "Built Talos, our full agentic chat web app on the claude-code-typescript SDK — artifact generation, design mode, and live previews for whatever the agent builds.",
-        "Shipped Talos as a micro-frontend inside Axiamatic UI so customers get the full chat experience without ever leaving the SaaS product.",
-        "Hunted down memory leaks in long-lived Talos sessions and clawed back the perf — profile, fix, ship, repeat until the numbers made sense.",
-        "Designed the Axm Design System MCP and wired it in as a skill the LLM calls, so every artifact Talos generates matches our design system on the first try.",
+        "Built Talos — full agentic chat web app on the claude-code-typescript SDK, with artifact generation, design mode, and live previews.",
+        "Drove the Axiamatic UI perf program — ~60% faster overall: FCP 4.1s → 0.8s, LCP 5.6s → 2.1s, DOMContentLoaded 4s → 340ms.",
+        "Fixed memory leaks in long-lived Talos sessions — heap 2.5 GB → 1.3 GB (−50%), external buffers 483 MB → 167 MB (−65%); ended OOM-triggered restarts.",
+        "Designed the Axm Design System MCP — wired in as an LLM-callable skill so Talos artifacts ship on-brand on the first try.",
+        "Mentored a team of 5+ engineers — fostered technical excellence, scalability awareness, and AI-augmented frontend craft.",
         "Migrated the real-time chat agent onto the AI-SDK streaming framework — responses feel instant now.",
+        "Shipped Talos as a micro-frontend inside Axiamatic UI — customers get the full chat experience without leaving the product.",
       ],
-      tags: ["Talos", "Claude SDK", "MCP", "Design systems", "Leadership"],
+      tags: ["Talos", "Claude SDK", "MCP", "Performance", "Leadership"],
     },
     {
       company: "Media.Net (Directi)",
@@ -150,8 +152,7 @@ export const site = {
       role: "Senior Web Application Developer",
       location: "Gurgaon",
       range: "May 2016 — Jan 2017",
-      summary:
-        "Owned the web mock-test portal end-to-end — built it from zero and tuned it to hold up as the template library grew.",
+      summary: "Owned the web mock-test portal end-to-end — built it and tuned it for scale.",
       highlights: [
         "Developed the web mock-test portal from scratch.",
         "Developed multiple mock-test templates.",
@@ -164,8 +165,7 @@ export const site = {
       role: "Software Engineer — Frontend",
       location: "Delhi",
       range: "Oct 2015 — May 2016",
-      summary:
-        "Shipped the core college-listing pages, then took on a full revamp of zoutons.com and the admin tooling that went with it.",
+      summary: "Shipped the core college-listing pages, then revamped zoutons.com end-to-end.",
       highlights: [
         "Developed colleges, courses, and fee-listing pages with HTML, CSS, Sass, and jQuery.",
         "Optimized performance and revamped zoutons.com end-to-end.",
@@ -179,7 +179,7 @@ export const site = {
       location: "Lucknow",
       range: "Jul 2014 — Sep 2015",
       summary:
-        "First job out of college. Built marketing sites and internal tools end-to-end with HTML5, CSS3, and vanilla JavaScript.",
+        "First job out of college — built marketing sites and internal tools with HTML5, CSS3, and vanilla JS.",
       tags: ["HTML5", "CSS3", "JavaScript"],
     },
   ],
