@@ -20,7 +20,7 @@ export const site = {
     lastName: "Mishra",
     roleTag: "Staff Frontend Engineer",
     subline:
-      "Staff engineer, 11+ years in. I build full agentic AI products — from the design system up to the streaming chat. Most recently Talos at Axiamatic: a chat workspace with artifacts, design mode, and live previews.",
+      "Staff Engineer with 11+ years building scalable web platforms and AI-native products — spanning architecture, design systems, real-time UIs, and frontend performance. Currently leading Talos at Axiamatic: an agentic chat workspace with artifact generation, design mode, and live previews, shipping in every tenant.",
   },
   marquee: [
     "WEB ENGINEERING",
@@ -51,7 +51,7 @@ export const site = {
     "Vite",
     "Webpack",
     "Storybook",
-    "Jest · Playwright",
+    "Jest · RTL · Playwright",
     "Lighthouse",
     "Chrome DevTools",
     "Sentry · Heap profiling",
@@ -103,7 +103,7 @@ export const site = {
     highlight: {
       stat: "CWV",
       detail:
-        "Led the perf program on the Pub dashboard at Media.Net. Real numbers — FCP 5.1s → 0.2s, LCP 13.7s → 3.2s. Still my favourite graph.",
+        "Led the perf program on the Pub dashboard at Media.Net — a publisher-facing tool inside one of the open web's largest SSPs. Real numbers: FCP 5.1s → 0.2s, LCP 13.7s → 3.2s. Still my favourite graph.",
     },
     pillars: [
       "Technical leadership & mentorship",
@@ -126,11 +126,11 @@ export const site = {
       summary:
         "Leading frontend for an AI-native ERP — Talos chat, the Axm Design System MCP, agentic product UIs, and the glue that ties it all together.",
       highlights: [
-        "Built Talos — full agentic chat web app on the claude-code-typescript SDK, with artifact generation, design mode, and live previews.",
+        "Built Talos — an agentic chat workspace on the claude-code-typescript SDK, with artifact generation, design mode, and live previews; shipping in every Axiamatic customer workspace as a micro-frontend.",
         "Drove the Axiamatic UI perf program — ~60% faster overall: FCP 4.1s → 0.8s, LCP 5.6s → 2.1s, DOMContentLoaded 4s → 340ms.",
-        "Fixed memory leaks in long-lived Talos sessions — heap 2.5 GB → 1.3 GB (−50%), external buffers 483 MB → 167 MB (−65%); ended OOM-triggered restarts.",
-        "Designed the Axm Design System MCP — wired in as an LLM-callable skill so Talos artifacts ship on-brand on the first try.",
-        "Lead frontend architecture, code reviews, and design-pattern work day-to-day — continuously refine the tech stack and mentor 5+ engineers.",
+        "Fixed memory leaks in long-lived Talos sessions (up to 90 minutes of continuous agentic work) — heap 2.5 GB → 1.3 GB (−50%), external buffers 483 MB → 167 MB (−65%); ended OOM-triggered restarts.",
+        "Designed the Axm Design System MCP — exposed as an LLM-callable skill so Talos artifacts render on-brand by default.",
+        "Led frontend architecture, code reviews, and design-pattern work day-to-day — continuously refined the tech stack and mentored 5+ engineers.",
         "Migrated the real-time chat agent onto the AI-SDK streaming framework — responses feel instant now.",
         "Shipped Talos as a micro-frontend inside Axiamatic UI — customers get the full chat experience without leaving the product.",
       ],
@@ -144,8 +144,8 @@ export const site = {
       summary:
         "Nearly six years on large React/Redux apps. Led a Next.js migration, built the Pub Ad-Quality dashboard, and ran the Core Web Vitals program that moved our numbers from red to green.",
       highlights: [
-        "Built the Pub Ad-Quality dashboard on React, Redux Toolkit, Styled Components, and Grommet — full multi-theming from day one.",
-        "Led a Next.js migration using SSG, ISR, and SSR where each actually made sense.",
+        "Built the Pub Ad-Quality dashboard on React, Redux Toolkit, Styled Components, and Grommet — full multi-theming from day one; a publisher-facing tool inside one of the open web's largest SSPs (15+ years, publishers like TIME and U.S. News).",
+        "Led a Next.js migration — matched SSG, ISR, and SSR to each page's render and data profile.",
         "Drove the CWV program: FCP 5.1s → 0.2s, LCP 13.7s → 3.2s on the Pub dashboard.",
         "Ran bi-weekly dev syncs and mentored three engineers into senior roles.",
       ],
@@ -203,6 +203,7 @@ export const site = {
     "Claude SDK",
     "MCP",
     "AI-SDK",
+    "React Testing Library",
     "Lighthouse / DevTools",
     "Sentry / Heap profiling",
     "Vite / Webpack",

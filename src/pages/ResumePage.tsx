@@ -119,6 +119,56 @@ function JobEntry({
   )
 }
 
+/* Pre-2017 roles are compressed into a single "Earlier Experience" entry so
+   the resume stays on one A4 page without losing the timeline signal. The
+   portfolio's ExperienceSection still renders each of these jobs in full. */
+const EARLIER_SHORT_NAMES: Record<string, string> = {
+  "Onlinemocks Pvt. Ltd.": "Onlinemocks",
+  "Collegedunia Web Pvt. Ltd.": "Collegedunia",
+  "Rising Hues Technologies LLP": "Rising Hues",
+}
+
+function EarlierExperience({ jobs }: { jobs: Job[] }) {
+  if (!jobs.length) return null
+  const newest = jobs[0]
+  const oldest = jobs[jobs.length - 1]
+  const startYear = oldest.range.split("—")[0]?.trim().slice(-4) ?? ""
+  const endYear = newest.range.split("—")[1]?.trim().slice(-4) ?? ""
+  const range = `${startYear} — ${endYear}`
+  const locations = Array.from(new Set(jobs.map((j) => j.location))).join(" · ")
+
+  return (
+    <article className="resume-job">
+      <div className="resume-job-rule" aria-hidden>
+        <span className="resume-job-rule-grey" />
+      </div>
+      <div className="resume-job-body">
+        <div className="resume-job-meta">
+          <div className="resume-job-range">{range}</div>
+          <div className="resume-job-company">Earlier Experience</div>
+          <div className="resume-job-location">{locations}</div>
+        </div>
+        <div className="resume-job-details">
+          <div className="resume-job-role">Frontend Engineer — first three years</div>
+          <ul className="resume-bullets">
+            {jobs.map((j) => {
+              const shortName = EARLIER_SHORT_NAMES[j.company] ?? j.company
+              return (
+                <li key={j.company}>
+                  <span className="resume-bullet-dash">—</span>
+                  <span>
+                    <strong>{shortName}</strong> — {j.summary}
+                  </span>
+                </li>
+              )
+            })}
+          </ul>
+        </div>
+      </div>
+    </article>
+  )
+}
+
 function SectionRow({
   label,
   sub,
@@ -148,16 +198,31 @@ function ContactCell({
   label,
   value,
   href,
+  compact,
 }: {
   Icon: IconCmp
   label: string
   value: string
   href?: string
+  /** Single-line inline variant — used for socials in the header sub-row. */
+  compact?: boolean
 }) {
   const Wrapper: React.ElementType = href ? "a" : "div"
   const wrapperProps = href
     ? { href, target: href.startsWith("http") ? "_blank" : undefined, rel: "noreferrer" }
     : {}
+  if (compact) {
+    return (
+      <Wrapper
+        className="resume-contact-cell resume-contact-cell-compact resume-link"
+        {...wrapperProps}
+        aria-label={`${label}: ${value}`}
+      >
+        <Icon className="resume-contact-icon-compact" strokeWidth={1.6} />
+        <span className="resume-contact-value-compact">{value}</span>
+      </Wrapper>
+    )
+  }
   return (
     <Wrapper className="resume-contact-cell resume-link" {...wrapperProps}>
       <Icon className="resume-contact-icon" strokeWidth={1.5} />
@@ -186,6 +251,7 @@ const skillsAiTooling: Array<[string, number]> = [
   ["Claude SDK", 90],
   ["MCP", 85],
   ["AI-SDK", 80],
+  ["React Testing Library", 82],
   ["Lighthouse / DevTools", 90],
   ["Sentry / Heap profiling", 85],
   ["Vite / Webpack", 86],
@@ -299,26 +365,64 @@ export function ResumePage() {
       <article className="resume-page">
         <header className="resume-header">
           <div className="resume-header-left">
-            <div className="resume-circle" aria-hidden />
+            <div className="resume-circle" aria-hidden>
+              <span className="resume-circle-monogram">AM</span>
+            </div>
             <div className="resume-name-block">
               <h1 className="resume-name">{site.name}</h1>
               <div className="resume-role">{site.role}</div>
+              <div className="resume-tagline">
+                <span className="resume-tagline-term">Frontend Platform</span>
+                <span className="resume-tagline-sep" aria-hidden>
+                  ·
+                </span>
+                <span className="resume-tagline-term resume-tagline-term-accent">AI Products</span>
+                <span className="resume-tagline-sep" aria-hidden>
+                  ·
+                </span>
+                <span className="resume-tagline-term">Perf</span>
+              </div>
             </div>
           </div>
           <div className="resume-header-right">
-            <ContactCell
-              Icon={Phone}
-              label="Phone"
-              value={site.phone}
-              href={`tel:${site.phone.replace(/\s+/g, "")}`}
-            />
-            <ContactCell
-              Icon={Mail}
-              label="Email"
-              value={site.email}
-              href={`mailto:${site.email}`}
-            />
-            <ContactCell Icon={Globe} label="Website" value="amitmishrg.in" href={site.url} />
+            <div className="resume-contact-grid">
+              <ContactCell
+                Icon={Phone}
+                label="Phone"
+                value={site.phone}
+                href={`tel:${site.phone.replace(/\s+/g, "")}`}
+              />
+              <ContactCell
+                Icon={Mail}
+                label="Email"
+                value={site.email}
+                href={`mailto:${site.email}`}
+              />
+              <ContactCell Icon={Globe} label="Website" value="amitmishrg.in" href={site.url} />
+            </div>
+            <div className="resume-contact-socials">
+              <ContactCell
+                Icon={Github}
+                label="GitHub"
+                value="github.com/amitmishrg"
+                href={site.social.github}
+                compact
+              />
+              <ContactCell
+                Icon={Linkedin}
+                label="LinkedIn"
+                value="linkedin.com/in/amitmishrg"
+                href={site.social.linkedin}
+                compact
+              />
+              <ContactCell
+                Icon={Twitter}
+                label="X"
+                value="@amitmishrg"
+                href={site.social.twitter}
+                compact
+              />
+            </div>
           </div>
         </header>
 
@@ -352,10 +456,27 @@ export function ResumePage() {
           {/* signal without blowing past a single A4 page. */}
           <JobEntry job={job1} maxBullets={5} showRule={true} />
           <JobEntry job={job2} maxBullets={5} />
-          {/* Older roles: one-line summary each. */}
-          <JobEntry job={job3} maxBullets={0} />
-          <JobEntry job={job4} maxBullets={0} />
-          <JobEntry job={job5} maxBullets={0} />
+          {/* Older roles collapsed into one block — see EarlierExperience. */}
+          <EarlierExperience jobs={[job3, job4, job5]} />
+        </SectionRow>
+
+        <SectionRow label="Skills">
+          <div className="resume-job-rule" aria-hidden>
+            <span className="resume-job-rule-grey" />
+            <span className="resume-job-rule-accent" />
+          </div>
+          <div className="resume-skills-grid">
+            <SkillList title="Frontend" items={skillsFrontend} />
+            <SkillList title="AI, testing & perf" items={skillsAiTooling} />
+          </div>
+        </SectionRow>
+
+        <SectionRow label="Open Source">
+          <div className="resume-job-rule" aria-hidden>
+            <span className="resume-job-rule-grey" />
+            <span className="resume-job-rule-accent" />
+          </div>
+          <OpenSourceList />
         </SectionRow>
 
         <SectionRow label="Education">
@@ -372,31 +493,9 @@ export function ResumePage() {
               </div>
               <div className="resume-job-details">
                 <div className="resume-job-role">{site.education.degree}</div>
-                <p className="resume-job-summary">
-                  Formal CS foundations — and where I started shipping real web apps.
-                </p>
               </div>
             </div>
           </article>
-        </SectionRow>
-
-        <SectionRow label="Skills">
-          <div className="resume-job-rule" aria-hidden>
-            <span className="resume-job-rule-grey" />
-            <span className="resume-job-rule-accent" />
-          </div>
-          <div className="resume-skills-grid">
-            <SkillList title="Frontend" items={skillsFrontend} />
-            <SkillList title="AI, tooling & perf" items={skillsAiTooling} />
-          </div>
-        </SectionRow>
-
-        <SectionRow label="Open Source">
-          <div className="resume-job-rule" aria-hidden>
-            <span className="resume-job-rule-grey" />
-            <span className="resume-job-rule-accent" />
-          </div>
-          <OpenSourceList />
         </SectionRow>
 
         <SectionRow label="Interests">
@@ -407,35 +506,6 @@ export function ResumePage() {
           <Interests />
         </SectionRow>
 
-        <footer className="resume-footer">
-          <a
-            className="resume-footer-item resume-link"
-            href={site.social.github}
-            target="_blank"
-            rel="noreferrer"
-          >
-            <Github className="resume-footer-icon" strokeWidth={1.6} fill="currentColor" />
-            github.com/amitmishrg
-          </a>
-          <a
-            className="resume-footer-item resume-link"
-            href={site.social.linkedin}
-            target="_blank"
-            rel="noreferrer"
-          >
-            <Linkedin className="resume-footer-icon" strokeWidth={1.6} fill="currentColor" />
-            linkedin.com/in/amitmishrg
-          </a>
-          <a
-            className="resume-footer-item resume-link"
-            href={site.social.twitter}
-            target="_blank"
-            rel="noreferrer"
-          >
-            <Twitter className="resume-footer-icon" strokeWidth={1.6} fill="currentColor" />
-            @amitmishrg
-          </a>
-        </footer>
       </article>
     </div>
   )

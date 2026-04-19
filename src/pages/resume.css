@@ -135,7 +135,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 24px;
   overflow: hidden;
 }
 
@@ -158,35 +158,43 @@
 /* ---------------------------- Header ------------------------------------ */
 .resume-header {
   display: grid;
-  grid-template-columns: 34% 66%;
+  grid-template-columns: auto 1fr;
   align-items: center;
-  gap: 12px;
+  gap: 32px;
   padding-bottom: 12px;
   border-bottom: 1px solid var(--resume-zinc-200);
 }
 
 .resume-header-left {
-  position: relative;
-  min-height: 80px;
   display: flex;
   align-items: center;
+  gap: 16px;
+  min-height: 80px;
 }
 
+/* Yellow disc with "AM" monogram — sits beside the name, not behind it.
+   Reads as an intentional brand mark instead of a decorative blob. */
 .resume-circle {
-  position: absolute;
-  left: -6px;
-  top: -2px;
-  width: 76px;
-  height: 76px;
+  flex-shrink: 0;
+  width: 64px;
+  height: 64px;
   border-radius: 50%;
   background: var(--resume-accent);
-  z-index: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.resume-circle-monogram {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--resume-ink);
+  line-height: 1;
 }
 
 .resume-name-block {
-  position: relative;
-  z-index: 1;
-  padding-left: 38px;
+  min-width: 0;
 }
 
 .resume-name {
@@ -196,6 +204,7 @@
   letter-spacing: -0.02em;
   line-height: 1;
   color: var(--resume-ink);
+  white-space: nowrap;
 }
 
 .resume-role {
@@ -205,11 +214,69 @@
   color: var(--resume-zinc-700);
 }
 
+.resume-tagline {
+  margin-top: 3px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  font-size: 10px;
+  letter-spacing: 0.01em;
+}
+
+.resume-tagline-term {
+  font-weight: 500;
+  color: var(--resume-zinc-700);
+}
+
+/* Middle term gets the ink-weight emphasis — signals the AI-product work
+   without introducing a jarring second color. */
+.resume-tagline-term-accent {
+  font-weight: 500;
+  color: var(--resume-zinc-700);
+  padding-bottom: 1px;
+}
+
+.resume-tagline-sep {
+  font-weight: 700;
+  color: var(--resume-accent);
+  line-height: 1;
+  transform: translateY(-1px);
+}
+
 .resume-header-right {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
   padding-top: 4px;
+}
+
+/* Primary contacts — phone / email / website.
+   Email gets the flex space; phone and website size to their content so
+   the long gmail address never wraps mid-domain. */
+.resume-contact-grid {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 22px;
+}
+
+/* Secondary socials — compact single-line row under the primary grid.
+   Kept in the header so the social links don't eat a footer row. */
+.resume-contact-socials {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0;
+  padding-top: 7px;
+  border-top: 1px solid var(--resume-zinc-200);
+}
+
+/* Middle-dot separator between compact social cells for even rhythm. */
+.resume-contact-cell-compact + .resume-contact-cell-compact::before {
+  content: "·";
+  margin: 0 10px;
+  color: var(--resume-zinc-400);
+  font-weight: 700;
 }
 
 .resume-contact-cell {
@@ -217,6 +284,27 @@
   gap: 8px;
   align-items: flex-start;
   min-width: 0;
+}
+
+.resume-contact-cell-compact {
+  align-items: center;
+  gap: 5px;
+  font-size: 8.5px;
+}
+
+.resume-contact-icon-compact {
+  width: 12px;
+  height: 12px;
+  color: var(--resume-zinc-700);
+  flex-shrink: 0;
+}
+
+.resume-contact-value-compact {
+  font-size: 8.5px;
+  font-weight: 500;
+  color: var(--resume-zinc-700);
+  letter-spacing: 0.01em;
+  white-space: nowrap;
 }
 
 .resume-contact-icon {
@@ -296,7 +384,7 @@
 .resume-section-body {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 16px;
   min-width: 0;
 }
 
@@ -621,6 +709,8 @@
 }
 
 /* ---------------------------- Footer ----------------------------------- */
+/* Footer kept for legacy — now unused after socials moved to the header.
+   Left in place so any future footer row can reuse these tokens. */
 .resume-footer {
   margin-top: auto;
   display: flex;
@@ -672,7 +762,7 @@
     width: 100%;
     min-height: 100vh;
     padding: 36px 52px 26px;
-    gap: 14px;
+    gap: 24px;
     page-break-after: auto;
     break-after: auto;
   }
