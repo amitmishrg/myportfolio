@@ -30,9 +30,21 @@ const nowRows: { label: string; value: string }[] = [
 ]
 
 const skillGroups: { label: string; skills: string[] }[] = [
-  { label: "Frontend", skills: ["React", "TypeScript", "Next.js", "Tailwind", "Storybook"] },
+  {
+    label: "Frontend",
+    skills: ["React", "TypeScript", "Next.js", "Tailwind", "React Query / SWR", "Storybook"],
+  },
   { label: "AI & MCP", skills: ["Claude SDK", "MCP", "AI-SDK"] },
-  { label: "Systems", skills: ["Node.js", "Vite / Webpack", "Jest", "Figma"] },
+  {
+    label: "Perf & tooling",
+    skills: [
+      "Lighthouse / DevTools",
+      "Sentry / Heap profiling",
+      "Node.js",
+      "Vite / Webpack",
+      "Figma",
+    ],
+  },
 ]
 
 function useBangaloreTime() {
@@ -116,7 +128,7 @@ export function AboutSection() {
             >
               Staff frontend engineer,{" "}
               <span className="relative font-semibold text-fuchsia-400 italic">
-                eleven years in.
+                11+ years in.
               </span>{" "}
               <span className="text-zinc-400">Still genuinely excited about the work.</span>
             </motion.p>

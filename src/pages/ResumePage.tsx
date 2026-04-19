@@ -169,14 +169,16 @@ function ContactCell({
   )
 }
 
-// All 12 entries from `site.skills`, split into two balanced columns.
-// Kept in order of where I spend the most hours so the bar weights read honestly.
+// Two balanced columns — Frontend on the left, AI + everything that keeps
+// production healthy on the right. Ordered by where I spend the most hours
+// so the bar weights read honestly.
 const skillsFrontend: Array<[string, number]> = [
   ["React", 90],
   ["TypeScript", 85],
   ["Next.js", 85],
   ["Tailwind", 95],
   ["Node.js", 80],
+  ["React Query / SWR", 85],
   ["Storybook", 85],
 ]
 
@@ -184,8 +186,9 @@ const skillsAiTooling: Array<[string, number]> = [
   ["Claude SDK", 90],
   ["MCP", 85],
   ["AI-SDK", 80],
+  ["Lighthouse / DevTools", 90],
+  ["Sentry / Heap profiling", 85],
   ["Vite / Webpack", 86],
-  ["Jest", 82],
   ["Figma", 88],
 ]
 
@@ -384,7 +387,7 @@ export function ResumePage() {
           </div>
           <div className="resume-skills-grid">
             <SkillList title="Frontend" items={skillsFrontend} />
-            <SkillList title="AI & tooling" items={skillsAiTooling} />
+            <SkillList title="AI, tooling & perf" items={skillsAiTooling} />
           </div>
         </SectionRow>
 
