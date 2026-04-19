@@ -1,0 +1,607 @@
+/* =======================================================================
+   Resume — editorial A4 layout matching the Aaron Walker template.
+   Print-ready: press ⌘/Ctrl + P → Save as PDF at A4 size.
+   ======================================================================= */
+
+:root {
+  --resume-ink: #111113;
+  --resume-zinc-800: #27272a;
+  --resume-zinc-700: #3f3f46;
+  --resume-zinc-600: #52525b;
+  --resume-zinc-500: #71717a;
+  --resume-zinc-400: #a1a1aa;
+  --resume-zinc-300: #d4d4d8;
+  --resume-zinc-200: #e4e4e7;
+  --resume-zinc-100: #f4f4f5;
+  --resume-accent: #f5c518; /* template yellow */
+  --resume-accent-soft: rgba(245, 197, 24, 0.14);
+  --resume-paper: #ffffff;
+  --resume-font:
+    "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+}
+
+.resume-body {
+  background: #e7e5e4 !important;
+  color: var(--resume-ink) !important;
+  font-family: var(--resume-font) !important;
+}
+
+.resume-root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  padding: 48px 24px 80px;
+  min-height: 100vh;
+  background: #e7e5e4;
+  color: var(--resume-ink);
+  font-family: var(--resume-font);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ---------------------------- Toolbar (screen only) --------------------- */
+.resume-toolbar {
+  position: sticky;
+  top: 16px;
+  z-index: 50;
+  width: 100%;
+  max-width: 595px;
+  display: flex;
+  justify-content: center;
+}
+
+.resume-toolbar-inner {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 14px 10px 18px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.04),
+    0 12px 30px -16px rgba(0, 0, 0, 0.2);
+  backdrop-filter: saturate(120%) blur(8px);
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--resume-zinc-600);
+}
+
+.resume-toolbar-hint kbd {
+  display: inline-block;
+  padding: 1px 5px;
+  margin: 0 2px;
+  border-radius: 4px;
+  background: var(--resume-zinc-100);
+  border: 1px solid var(--resume-zinc-200);
+  font-family: inherit;
+  font-size: 11px;
+  color: var(--resume-ink);
+}
+
+.resume-toolbar-btn {
+  appearance: none;
+  border: 0;
+  padding: 7px 14px;
+  border-radius: 999px;
+  background: var(--resume-ink);
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: transform 120ms ease;
+}
+
+.resume-toolbar-btn:hover {
+  transform: translateY(-1px);
+}
+
+/* ---------------------------- Page (A4) --------------------------------- */
+.resume-page {
+  width: 595px; /* A4 width at 72dpi */
+  min-height: 842px; /* A4 height at 72dpi */
+  background: var(--resume-paper);
+  padding: 44px 52px 28px;
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.04),
+    0 30px 60px -30px rgba(0, 0, 0, 0.25);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  overflow: hidden;
+}
+
+/* ---------------------------- Accent bar (Profile heading) -------------- */
+.resume-accent-bar {
+  display: block;
+  width: 34px;
+  height: 4px;
+  background: var(--resume-accent);
+}
+
+/* ---------------------------- Label rule (left-column sections) --------- */
+.resume-label-rule {
+  display: block;
+  width: 22px;
+  height: 1px;
+  background: var(--resume-ink);
+}
+
+/* ---------------------------- Header ------------------------------------ */
+.resume-header {
+  display: grid;
+  grid-template-columns: 34% 66%;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--resume-zinc-200);
+}
+
+.resume-header-left {
+  position: relative;
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+}
+
+.resume-circle {
+  position: absolute;
+  left: -6px;
+  top: -2px;
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  background: var(--resume-accent);
+  z-index: 0;
+}
+
+.resume-name-block {
+  position: relative;
+  z-index: 1;
+  padding-left: 38px;
+}
+
+.resume-name {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  color: var(--resume-ink);
+}
+
+.resume-role {
+  margin-top: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--resume-zinc-700);
+}
+
+.resume-header-right {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  padding-top: 4px;
+}
+
+.resume-contact-cell {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  min-width: 0;
+}
+
+.resume-contact-icon {
+  width: 16px;
+  height: 16px;
+  color: var(--resume-zinc-700);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.resume-contact-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.resume-contact-label {
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--resume-ink);
+  text-transform: uppercase;
+}
+
+.resume-contact-value {
+  font-size: 8.5px;
+  font-weight: 500;
+  color: var(--resume-zinc-600);
+  line-height: 1.4;
+  word-break: break-word;
+}
+
+/* ---------------------------- Section (two-col row) --------------------- */
+.resume-section {
+  display: grid;
+  grid-template-columns: 108px 1fr;
+  gap: 34px;
+  align-items: start;
+}
+
+.resume-section-label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 2px;
+}
+
+.resume-section-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--resume-ink);
+  line-height: 1.35;
+  /* Template stacks multi-word labels (Work / Experience). Force one word per line. */
+  word-spacing: 100vw;
+}
+
+.resume-section-sub {
+  margin-top: -2px;
+  font-size: 9.5px;
+  font-weight: 500;
+  font-style: italic;
+  color: var(--resume-zinc-600);
+  line-height: 1.4;
+}
+
+.resume-section-extra {
+  margin-top: 4px;
+}
+
+.resume-address {
+  font-size: 9px;
+  font-weight: 500;
+  line-height: 1.6;
+  color: var(--resume-zinc-700);
+  letter-spacing: 0.005em;
+}
+
+.resume-section-body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+}
+
+.resume-paragraph {
+  margin: 0;
+  font-size: 9px;
+  font-weight: 500;
+  line-height: 1.6;
+  color: var(--resume-zinc-800);
+}
+
+/* ---------------------------- Profile ---------------------------------- */
+.resume-profile-block {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.resume-profile-heading {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: flex-start;
+}
+
+.resume-profile-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--resume-ink);
+  letter-spacing: 0.005em;
+}
+
+.resume-profile {
+  display: grid;
+  grid-template-columns: 50px 1fr;
+  gap: 12px;
+  align-items: center;
+}
+
+.resume-portrait {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 30%;
+  border: 2px solid var(--resume-accent);
+  box-shadow: 0 0 0 2px var(--resume-accent-soft);
+  display: block;
+}
+
+/* ---------------------------- Job entry -------------------------------- */
+.resume-job {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.resume-job-rule {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 0;
+}
+
+.resume-job-rule-grey {
+  width: 58px;
+  height: 1px;
+  background: var(--resume-zinc-400);
+  flex-shrink: 0;
+}
+
+.resume-job-rule-accent {
+  flex: 1;
+  height: 1px;
+  background: var(--resume-accent);
+}
+
+.resume-job-body {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 16px;
+  align-items: start;
+}
+
+.resume-job-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.resume-job-range {
+  font-size: 9px;
+  font-weight: 600;
+  color: var(--resume-ink);
+  letter-spacing: 0.01em;
+  line-height: 1.4;
+}
+
+.resume-job-company {
+  font-size: 9px;
+  font-weight: 600;
+  color: var(--resume-zinc-700);
+  line-height: 1.4;
+}
+
+.resume-job-location {
+  font-size: 8.5px;
+  font-weight: 500;
+  color: var(--resume-zinc-600);
+  line-height: 1.4;
+}
+
+.resume-job-details {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.resume-job-role {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--resume-ink);
+  letter-spacing: -0.005em;
+  line-height: 1.35;
+}
+
+.resume-job-summary {
+  margin: 0;
+  font-size: 9px;
+  font-weight: 500;
+  line-height: 1.55;
+  color: var(--resume-zinc-800);
+}
+
+.resume-bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.resume-bullets li {
+  display: flex;
+  gap: 6px;
+  font-size: 8.5px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--resume-zinc-800);
+}
+
+.resume-bullet-dash {
+  flex-shrink: 0;
+  color: var(--resume-accent);
+  font-weight: 700;
+  width: 10px;
+}
+
+/* ---------------------------- Skills ----------------------------------- */
+.resume-skills-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 26px;
+  padding-top: 4px;
+}
+
+.resume-skill-col {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.resume-skill-title {
+  font-size: 9.5px;
+  font-weight: 700;
+  color: var(--resume-ink);
+  margin-bottom: 1px;
+  letter-spacing: 0.005em;
+}
+
+.resume-skill-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.resume-skill-row {
+  display: grid;
+  grid-template-columns: 70px 1fr;
+  align-items: center;
+  gap: 10px;
+}
+
+.resume-skill-name {
+  font-size: 9px;
+  font-weight: 500;
+  color: var(--resume-zinc-800);
+  line-height: 1.4;
+}
+
+.resume-skill-bar {
+  position: relative;
+  height: 2px;
+  background: var(--resume-zinc-200);
+  border-radius: 1px;
+  width: 100%;
+}
+
+.resume-skill-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  background: var(--resume-accent);
+  border-radius: 1px;
+}
+
+.resume-skill-dot {
+  position: absolute;
+  right: -2px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--resume-ink);
+}
+
+/* ---------------------------- Interests -------------------------------- */
+.resume-interests {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding-top: 2px;
+}
+
+.resume-interest-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  min-width: 48px;
+}
+
+.resume-interest-bubble {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--resume-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.resume-interest-icon {
+  width: 17px;
+  height: 17px;
+  color: white;
+}
+
+.resume-interest-label {
+  font-size: 8.5px;
+  font-weight: 500;
+  color: var(--resume-ink);
+  text-align: center;
+  line-height: 1.3;
+}
+
+/* ---------------------------- Footer ----------------------------------- */
+.resume-footer {
+  margin-top: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 26px;
+  padding-top: 17px;
+  border-top: 1px solid var(--resume-zinc-200);
+  font-size: 8.5px;
+  font-weight: 600;
+  color: var(--resume-zinc-800);
+}
+
+.resume-footer-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  letter-spacing: 0.01em;
+}
+
+.resume-footer-icon {
+  width: 13px;
+  height: 13px;
+  color: var(--resume-zinc-700);
+}
+
+/* =======================================================================
+   PRINT — A4, remove shadows, hide toolbar, force exact colours
+   ======================================================================= */
+@page {
+  size: A4;
+  margin: 0;
+}
+
+@media print {
+  .resume-toolbar {
+    display: none !important;
+  }
+
+  .resume-body,
+  .resume-root {
+    background: white !important;
+    padding: 0 !important;
+    gap: 0 !important;
+  }
+
+  .resume-page {
+    box-shadow: none !important;
+    width: 100%;
+    min-height: 100vh;
+    padding: 36px 52px 26px;
+    gap: 18px;
+    page-break-after: auto;
+    break-after: auto;
+  }
+
+  /* Preserve exact colours (accent circle, bars, icons) in the PDF. */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}

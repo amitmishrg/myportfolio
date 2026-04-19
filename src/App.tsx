@@ -14,8 +14,17 @@ import { PortfolioSection } from "./sections/PortfolioSection"
 import { QuoteSection } from "./sections/QuoteSection"
 import { ServicesSection } from "./sections/ServicesSection"
 import { StatsSection } from "./sections/StatsSection"
+import { ResumePage } from "./pages/ResumePage"
 
 export default function App() {
+  // Tiny path-based router — keeps the /resume page fully standalone
+  // (no header, footer, cursor, smooth-scroll, or gradient mesh) so print
+  // output is clean A4 pages.
+  const pathname = typeof window !== "undefined" ? window.location.pathname : "/"
+  if (pathname === "/resume" || pathname === "/resume/") {
+    return <ResumePage />
+  }
+
   return (
     <SmoothScroll>
       <CustomCursor />

@@ -88,13 +88,14 @@ export function HeroSection() {
               <span className="pointer-events-none absolute inset-y-0 left-0 w-1/3 -translate-x-full bg-linear-to-r from-transparent via-fuchsia-200/80 to-transparent transition-transform duration-700 group-hover:translate-x-[300%]" />
             </motion.a>
             <a
-              href={site.assets.resumePdf}
-              download={site.assets.resumeDownloadName}
+              href="/resume"
+              target="_blank"
+              rel="noreferrer"
               data-cursor="download"
               className="group inline-flex items-center gap-2 text-sm font-medium text-zinc-200 hover:text-white"
             >
               <span className="border-b border-white/30 pb-0.5 transition-colors group-hover:border-white">
-                Download Resume
+                View / Download Resume
               </span>
               <ArrowDown className="h-4 w-4 transition-transform group-hover:translate-y-0.5" />
             </a>
