@@ -9,7 +9,6 @@ type IconCmp = React.ComponentType<{
   strokeWidth?: number
 }>
 
-/* -------- Custom sport icons (Lucide has no cricket bat / TT paddle). */
 function CricketIcon({
   className,
   strokeWidth = 1.8,
@@ -28,11 +27,8 @@ function CricketIcon({
       strokeLinejoin="round"
       aria-hidden
     >
-      {/* bat blade — angled rectangle */}
       <path d="M14 2 L18 6 L8 16 L4 12 Z" />
-      {/* handle */}
       <path d="M15.5 4.5 L19 1" />
-      {/* ball */}
       <circle cx="5" cy="20" r="1.6" />
     </svg>
   )
@@ -56,11 +52,8 @@ function TableTennisIcon({
       strokeLinejoin="round"
       aria-hidden
     >
-      {/* paddle face */}
       <circle cx="9" cy="9" r="5.5" />
-      {/* handle */}
       <path d="M13 13 L19 19" />
-      {/* ball */}
       <circle cx="19" cy="5" r="1.4" />
     </svg>
   )
@@ -84,8 +77,6 @@ function JobEntry({
   showRule?: boolean
 }) {
   const allHighlights = "highlights" in job && job.highlights ? job.highlights : []
-  // `maxBullets === 0` forces the short summary line (used for older roles so
-  // the whole resume stays on one A4 page).
   const highlights = maxBullets != null ? allHighlights.slice(0, maxBullets) : allHighlights
   return (
     <article className="resume-job">
@@ -113,56 +104,6 @@ function JobEntry({
           ) : (
             <p className="resume-job-summary">{job.summary}</p>
           )}
-        </div>
-      </div>
-    </article>
-  )
-}
-
-/* Pre-2017 roles are compressed into a single "Earlier Experience" entry so
-   the resume stays on one A4 page without losing the timeline signal. The
-   portfolio's ExperienceSection still renders each of these jobs in full. */
-const EARLIER_SHORT_NAMES: Record<string, string> = {
-  "Onlinemocks Pvt. Ltd.": "Onlinemocks",
-  "Collegedunia Web Pvt. Ltd.": "Collegedunia",
-  "Rising Hues Technologies LLP": "Rising Hues",
-}
-
-function EarlierExperience({ jobs }: { jobs: Job[] }) {
-  if (!jobs.length) return null
-  const newest = jobs[0]
-  const oldest = jobs[jobs.length - 1]
-  const startYear = oldest.range.split("—")[0]?.trim().slice(-4) ?? ""
-  const endYear = newest.range.split("—")[1]?.trim().slice(-4) ?? ""
-  const range = `${startYear} — ${endYear}`
-  const locations = Array.from(new Set(jobs.map((j) => j.location))).join(" · ")
-
-  return (
-    <article className="resume-job">
-      <div className="resume-job-rule" aria-hidden>
-        <span className="resume-job-rule-grey" />
-      </div>
-      <div className="resume-job-body">
-        <div className="resume-job-meta">
-          <div className="resume-job-range">{range}</div>
-          <div className="resume-job-company">Earlier Experience</div>
-          <div className="resume-job-location">{locations}</div>
-        </div>
-        <div className="resume-job-details">
-          <div className="resume-job-role">Frontend Engineer — first three years</div>
-          <ul className="resume-bullets">
-            {jobs.map((j) => {
-              const shortName = EARLIER_SHORT_NAMES[j.company] ?? j.company
-              return (
-                <li key={j.company}>
-                  <span className="resume-bullet-dash">—</span>
-                  <span>
-                    <strong>{shortName}</strong> — {j.summary}
-                  </span>
-                </li>
-              )
-            })}
-          </ul>
         </div>
       </div>
     </article>
@@ -204,7 +145,6 @@ function ContactCell({
   label: string
   value: string
   href?: string
-  /** Single-line inline variant — used for socials in the header sub-row. */
   compact?: boolean
 }) {
   const Wrapper: React.ElementType = href ? "a" : "div"
@@ -234,31 +174,7 @@ function ContactCell({
   )
 }
 
-// Two balanced columns — Frontend on the left, AI + everything that keeps
-// production healthy on the right. Ordered by where I spend the most hours
-// so the bar weights read honestly.
-const skillsFrontend: Array<[string, number]> = [
-  ["React", 90],
-  ["TypeScript", 85],
-  ["Next.js", 85],
-  ["Tailwind", 95],
-  ["Node.js", 80],
-  ["React Query / SWR", 85],
-  ["Storybook", 85],
-]
-
-const skillsAiTooling: Array<[string, number]> = [
-  ["Claude SDK", 90],
-  ["MCP", 85],
-  ["AI-SDK", 80],
-  ["React Testing Library", 82],
-  ["Lighthouse / DevTools", 90],
-  ["Sentry / Heap profiling", 85],
-  ["Vite / Webpack", 86],
-  ["Figma", 88],
-]
-
-function SkillList({ title, items }: { title: string; items: Array<[string, number]> }) {
+function SkillList({ title, items }: { title: string; items: ReadonlyArray<readonly [string, number]> }) {
   return (
     <div className="resume-skill-col">
       <div className="resume-skill-title">{title}</div>
@@ -272,6 +188,32 @@ function SkillList({ title, items }: { title: string; items: Array<[string, numb
           </div>
         ))}
       </div>
+    </div>
+  )
+}
+
+function ResumeTagline() {
+  const { taglineTerms, taglineAccent } = site.resume
+  return (
+    <div className="resume-tagline">
+      {taglineTerms.map((term, i) => (
+        <span key={term}>
+          {i > 0 ? (
+            <span className="resume-tagline-sep" aria-hidden>
+              ·
+            </span>
+          ) : null}
+          <span
+            className={
+              term === taglineAccent
+                ? "resume-tagline-term resume-tagline-term-accent"
+                : "resume-tagline-term"
+            }
+          >
+            {term}
+          </span>
+        </span>
+      ))}
     </div>
   )
 }
@@ -298,19 +240,13 @@ function Interests() {
   )
 }
 
-/* -------- Open-source row.
-   One line per project: bold name → tagline → meta badge on the right.
-   Resume-tightened taglines (the data/site.ts copies are written for the
-   long-form portfolio page; here we want crisp single-liners). */
-const openSourceTaglines: Record<string, string> = {
-  AgenticLens: "Visualize and debug AI agent workflows.",
-  "code-resume": "Offline-first resume builder with PDF export.",
-  Picksy: "Two-choice social voting with a personalised trending feed.",
-  "WebMCP ShopQuick": "Shopping cart exposed as AI tools via WebMCP.",
-}
+type OpenSourceResumeItem = (typeof site.openSource.featured)[number]
 
-function metaForProject(p: (typeof site.openSource.projects)[number]): string {
-  // Strip protocol/`www.` so URLs read as plain domains in print.
+const resumeOpenSource: OpenSourceResumeItem[] = site.resume.openSourceNames
+  .map((name) => site.openSource.featured.find((p) => p.name === name))
+  .filter((p): p is OpenSourceResumeItem => p != null)
+
+function metaForProject(p: OpenSourceResumeItem): string {
   const display = p.href.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "")
   if (p.meta.kind === "live") return `Live · ${display}`
   if (p.meta.kind === "stars") return `${p.meta.label} · ${display}`
@@ -320,13 +256,13 @@ function metaForProject(p: (typeof site.openSource.projects)[number]): string {
 function OpenSourceList() {
   return (
     <ul className="resume-os">
-      {site.openSource.projects.map((p) => (
+      {resumeOpenSource.map((p) => (
         <li key={p.name} className="resume-os-item">
           <a className="resume-os-link resume-link" href={p.href} target="_blank" rel="noreferrer">
             <span className="resume-os-text">
               <span className="resume-os-name">{p.name}</span>
               <span className="resume-os-sep"> — </span>
-              <span className="resume-os-tagline">{openSourceTaglines[p.name] ?? p.tagline}</span>
+              <span className="resume-os-tagline">{p.tagline}</span>
             </span>
             <span className="resume-os-meta">{metaForProject(p)}</span>
           </a>
@@ -338,14 +274,15 @@ function OpenSourceList() {
 
 export function ResumePage() {
   useEffect(() => {
-    document.title = `${site.name} — Resume`
+    document.title = `${site.name} — Staff Frontend Engineer | Resume`
     document.body.classList.add("resume-body")
     return () => {
       document.body.classList.remove("resume-body")
     }
   }, [])
 
-  const [job1, job2, job3, job4, job5] = site.experience
+  const [job1, job2, job3] = site.experience
+  const { experienceMaxBullets, skills } = site.resume
 
   return (
     <div className="resume-root">
@@ -361,7 +298,6 @@ export function ResumePage() {
         </div>
       </div>
 
-      {/* =================== PAGE 1 =================== */}
       <article className="resume-page">
         <header className="resume-header">
           <div className="resume-header-left">
@@ -371,17 +307,7 @@ export function ResumePage() {
             <div className="resume-name-block">
               <h1 className="resume-name">{site.name}</h1>
               <div className="resume-role">{site.role}</div>
-              <div className="resume-tagline">
-                <span className="resume-tagline-term">Frontend Platform</span>
-                <span className="resume-tagline-sep" aria-hidden>
-                  ·
-                </span>
-                <span className="resume-tagline-term resume-tagline-term-accent">AI Products</span>
-                <span className="resume-tagline-sep" aria-hidden>
-                  ·
-                </span>
-                <span className="resume-tagline-term">Perf</span>
-              </div>
+              <ResumeTagline />
             </div>
           </div>
           <div className="resume-header-right">
@@ -441,23 +367,15 @@ export function ResumePage() {
               <AccentBar />
             </div>
             <div className="resume-profile">
-              <img
-                src="/images/amit-portrait.png"
-                alt={`${site.name} portrait`}
-                className="resume-portrait"
-              />
-              <p className="resume-paragraph">{site.hero.subline}</p>
+              <p className="resume-paragraph">{site.resume.profile}</p>
             </div>
           </div>
         </SectionRow>
 
         <SectionRow label="Work Experience">
-          {/* Top three achievements for the two most recent roles — enough */}
-          {/* signal without blowing past a single A4 page. */}
-          <JobEntry job={job1} maxBullets={5} showRule={true} />
-          <JobEntry job={job2} maxBullets={5} />
-          {/* Older roles collapsed into one block — see EarlierExperience. */}
-          <EarlierExperience jobs={[job3, job4, job5]} />
+          <JobEntry job={job1} maxBullets={experienceMaxBullets.axiamatic} showRule={true} />
+          <JobEntry job={job2} maxBullets={experienceMaxBullets.medianet} />
+          <JobEntry job={job3} maxBullets={experienceMaxBullets.earlier} />
         </SectionRow>
 
         <SectionRow label="Skills">
@@ -466,12 +384,12 @@ export function ResumePage() {
             <span className="resume-job-rule-accent" />
           </div>
           <div className="resume-skills-grid">
-            <SkillList title="Frontend" items={skillsFrontend} />
-            <SkillList title="AI, testing & perf" items={skillsAiTooling} />
+            <SkillList title={skills.left.title} items={skills.left.items} />
+            <SkillList title={skills.right.title} items={skills.right.items} />
           </div>
         </SectionRow>
 
-        <SectionRow label="Open Source">
+        <SectionRow label="Open Source & Developer Tools">
           <div className="resume-job-rule" aria-hidden>
             <span className="resume-job-rule-grey" />
             <span className="resume-job-rule-accent" />
@@ -505,7 +423,6 @@ export function ResumePage() {
           </div>
           <Interests />
         </SectionRow>
-
       </article>
     </div>
   )

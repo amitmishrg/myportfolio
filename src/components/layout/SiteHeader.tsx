@@ -6,11 +6,11 @@ import { site } from "../../data/site"
 import { cn } from "../../lib/cn"
 
 const links = [
-  { href: "#services", label: "Services" },
-  { href: "#about", label: "About" },
-  { href: "#work", label: "Work" },
-  { href: "#experience", label: "Experience" },
+  { href: "#impact", label: "Impact" },
+  { href: "#specialize", label: "Specialize" },
+  { href: "#axiamatic", label: "Work" },
   { href: "#open-source", label: "Open source" },
+  { href: "#experience", label: "Experience" },
   { href: "#contact", label: "Contact" },
 ] as const
 

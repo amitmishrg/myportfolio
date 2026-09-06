@@ -8,13 +8,14 @@ import { site } from "../data/site"
 export function ExperienceSection() {
   return (
     <section id="experience" className="relative scroll-mt-28 overflow-hidden py-24 sm:py-32">
-      <SectionScan number="05" label="EXPERIENCE" />
+      <SectionScan number="07" label="EXPERIENCE" />
       <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6">
         <SectionHeading
-          index="04"
-          eyebrow="Experience"
-          title="11 years,"
-          titleAccent="one craft."
+          index="07"
+          eyebrow="Career"
+          title="11+ years,"
+          titleAccent="one craft"
+          align="left"
         />
 
         <ol className="divide-y divide-white/10 overflow-hidden rounded-[28px] border border-white/10 bg-white/2">

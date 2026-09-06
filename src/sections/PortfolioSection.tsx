@@ -24,14 +24,10 @@ export function PortfolioSection() {
       <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6">
         <SectionHeading
           index="03"
-          eyebrow="Case study"
+          eyebrow="Featured projects"
           title="Selected"
-          titleAccent="projects."
-          action={
-            <a href="#contact" className="text-sm font-medium text-zinc-400 hover:text-white">
-              Request more →
-            </a>
-          }
+          titleAccent="work"
+          align="left"
         />
 
         <motion.div
@@ -57,7 +53,11 @@ export function PortfolioSection() {
                   src={p.image}
                   alt={p.title}
                   loading="lazy"
-                  className="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-[900ms] ease-out group-hover:scale-[1.04]"
+                  className={`absolute inset-0 h-full w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.04] ${
+                    "imagePosition" in p && p.imagePosition === "center"
+                      ? "object-center"
+                      : "object-top"
+                  }`}
                 />
                 <div
                   aria-hidden

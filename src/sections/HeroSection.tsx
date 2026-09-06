@@ -1,5 +1,5 @@
 import { motion } from "framer-motion"
-import { ArrowDown, ArrowRight, Sparkles, Star } from "lucide-react"
+import { ArrowDown, ArrowRight, Star } from "lucide-react"
 
 import { AnimatedUnderline } from "../components/ui/AnimatedUnderline"
 import { ChromaticBlob } from "../components/ui/ChromaticBlob"
@@ -22,25 +22,20 @@ export function HeroSection() {
 
       <div className="relative mx-auto grid max-w-6xl gap-12 px-4 pt-10 pb-12 sm:px-6 md:grid-cols-12 md:gap-8 md:pt-14 lg:pt-16">
         <div className="md:col-span-7">
-          <motion.div {...fade(0)} className="mb-12 flex items-center gap-3 text-sm text-zinc-300">
-            <PulseRings />
-            <span className="text-zinc-400">Available for staff & platform roles</span>
-          </motion.div>
+          <motion.p
+            {...fade(0)}
+            className="mb-6 font-mono text-[11px] font-semibold tracking-[0.28em] text-zinc-400 uppercase"
+          >
+            {site.hero.eyebrow}
+          </motion.p>
 
           <motion.p
             {...fade(0.05)}
-            className="font-serif text-4xl leading-none text-zinc-200 italic sm:text-5xl"
+            className="font-serif text-3xl leading-none text-zinc-300 italic sm:text-4xl"
           >
-            {site.hero.greeting}
-          </motion.p>
-
-          <motion.h1
-            {...fade(0.12)}
-            className="font-display mt-2 text-[2.5rem] leading-[0.95] font-semibold tracking-tight text-white sm:text-6xl md:text-[3.75rem] lg:text-[4.75rem]"
-          >
-            <span className="block">{site.hero.firstName}</span>
+            {site.hero.greeting} {site.hero.firstName}{" "}
             <span className="relative inline-block">
-              <span className="block bg-linear-to-r from-[#ff6fd8] via-[#ffd06b] to-[#6bd4ff] bg-clip-text font-serif font-normal text-transparent italic">
+              <span className="bg-linear-to-r from-[#ff6fd8] via-[#ffd06b] to-[#6bd4ff] bg-clip-text text-transparent">
                 {site.hero.lastName}.
               </span>
               <AnimatedUnderline
@@ -48,29 +43,36 @@ export function HeroSection() {
                 color="url(#heroUnderlineGradient)"
                 className="-bottom-1 left-0"
               />
-              <svg width="0" height="0" className="absolute">
-                <defs>
-                  <linearGradient id="heroUnderlineGradient" x1="0" y1="0" x2="1" y2="0">
-                    <stop offset="0%" stopColor="#ff6fd8" />
-                    <stop offset="50%" stopColor="#ffd06b" />
-                    <stop offset="100%" stopColor="#6bd4ff" />
-                  </linearGradient>
-                </defs>
-              </svg>
             </span>
+          </motion.p>
+
+          <svg width="0" height="0" className="absolute" aria-hidden>
+            <defs>
+              <linearGradient id="heroUnderlineGradient" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stopColor="#ff6fd8" />
+                <stop offset="50%" stopColor="#ffd06b" />
+                <stop offset="100%" stopColor="#6bd4ff" />
+              </linearGradient>
+            </defs>
+          </svg>
+
+          <motion.h1
+            {...fade(0.12)}
+            className="font-display mt-5 text-[1.75rem] leading-[1.1] font-semibold tracking-tight text-white sm:text-4xl md:text-[2.75rem] lg:text-5xl"
+          >
+            {site.hero.headline}
           </motion.h1>
 
           <motion.div {...fade(0.2)} className="mt-6 flex items-center gap-3">
-            <span className="h-px w-10 bg-white/30" />
-            <span className="inline-flex items-center gap-2 font-serif text-xl text-zinc-300 italic">
-              {site.hero.roleTag}
-              <Sparkles className="h-4 w-4 text-fuchsia-300" />
+            <PulseRings />
+            <span className="text-sm text-zinc-400">
+              Available for Staff & Principal frontend roles
             </span>
           </motion.div>
 
           <motion.p
             {...fade(0.26)}
-            className="mt-9 max-w-xl text-base leading-relaxed text-zinc-400 sm:text-lg"
+            className="mt-7 max-w-xl text-base leading-relaxed text-zinc-400"
           >
             {site.hero.subline}
           </motion.p>

@@ -8,12 +8,12 @@ export function SiteFooter() {
       <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
         <div className="flex flex-col gap-10 md:flex-row md:items-end md:justify-between">
           <div className="max-w-xl">
-            <p className="text-xs font-semibold tracking-[0.3em] text-zinc-500 uppercase">
-              Reach out
-            </p>
+            <p className="font-display text-2xl font-semibold text-white">{site.name}</p>
+            <p className="mt-1 text-sm text-zinc-400">{site.role}</p>
+            <p className="mt-1 text-sm text-zinc-500">{site.tagline}</p>
             <a
               href={`mailto:${site.email}`}
-              className="font-display mt-3 block text-2xl font-semibold break-all text-white hover:underline sm:text-4xl md:text-4xl"
+              className="mt-4 inline-block text-sm text-zinc-300 transition-colors hover:text-white"
             >
               {site.email}
             </a>
@@ -29,6 +29,8 @@ export function SiteFooter() {
             </a>
             <a
               href={site.social.github}
+              target="_blank"
+              rel="noreferrer"
               className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 text-zinc-300 transition-colors hover:border-white/25 hover:text-white"
               aria-label="GitHub"
             >
@@ -36,6 +38,8 @@ export function SiteFooter() {
             </a>
             <a
               href={site.social.linkedin}
+              target="_blank"
+              rel="noreferrer"
               className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 text-zinc-300 transition-colors hover:border-white/25 hover:text-white"
               aria-label="LinkedIn"
             >
@@ -51,9 +55,6 @@ export function SiteFooter() {
           <div className="flex flex-wrap gap-x-6 gap-y-2">
             <a href={site.url} className="hover:text-zinc-300">
               {site.url.replace(/^https?:\/\//, "")}
-            </a>
-            <a href={`tel:${site.phone.replace(/\s/g, "")}`} className="hover:text-zinc-300">
-              {site.phone}
             </a>
             <span>{site.location}</span>
           </div>

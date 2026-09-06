@@ -23,28 +23,10 @@ const stagger: Variants = {
 }
 
 const nowRows: { label: string; value: string }[] = [
-  { label: "Building", value: "Talos — agentic chat workspace" },
-  { label: "Obsessing over", value: "Design-system MCP + artifact quality" },
-  { label: "Shipping with", value: "React · TS · Claude SDK · MCP" },
-  { label: "Next kick", value: "Streaming UIs that feel instant" },
-]
-
-const skillGroups: { label: string; skills: string[] }[] = [
-  {
-    label: "Frontend",
-    skills: ["React", "TypeScript", "Next.js", "Tailwind", "React Query / SWR", "Storybook"],
-  },
-  { label: "AI & MCP", skills: ["Claude SDK", "MCP", "AI-SDK"] },
-  {
-    label: "Perf & tooling",
-    skills: [
-      "Lighthouse / DevTools",
-      "Sentry / Heap profiling",
-      "Node.js",
-      "Vite / Webpack",
-      "Figma",
-    ],
-  },
+  { label: "Building", value: "Talos — agentic workspace" },
+  { label: "Shipping", value: "eng-os · AgenticLens · GhostCode" },
+  { label: "Stack", value: "React · TS · AI SDK · MCP" },
+  { label: "Focus", value: "Platform · perf · developer tools" },
 ]
 
 function useBangaloreTime() {
@@ -73,7 +55,6 @@ export function AboutSection() {
       id="about"
       className="relative scroll-mt-28 overflow-hidden py-24 text-zinc-200 sm:py-32"
     >
-      {/* Subtle dot grid */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 opacity-[0.35]"
@@ -83,7 +64,6 @@ export function AboutSection() {
           backgroundSize: "32px 32px",
         }}
       />
-      {/* Single diffused color accent — one source of warmth */}
       <div
         aria-hidden
         className="pointer-events-none absolute top-1/4 -right-32 h-[560px] w-[560px] rounded-full opacity-[0.22] blur-[140px]"
@@ -93,18 +73,18 @@ export function AboutSection() {
         }}
       />
 
-      <SectionScan number="03" label="ABOUT" />
+      <SectionScan number="09" label="ABOUT" />
 
       <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6">
         <SectionHeading
-          index="02"
-          eyebrow="About me"
-          title="Crafted systems."
-          titleAccent="Thoughtful UX."
+          index="09"
+          eyebrow="About"
+          title="Frontend systems"
+          titleAccent="at scale"
+          align="left"
         />
 
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
-          {/* LEFT COLUMN */}
           <motion.div
             variants={stagger}
             initial="hidden"
@@ -112,31 +92,15 @@ export function AboutSection() {
             viewport={{ once: true, margin: "-80px" }}
             className="lg:col-span-7"
           >
-            {/* Section eyebrow for the intro */}
             <motion.p
               variants={fadeUp}
-              className="mb-5 inline-flex items-center gap-3 font-mono text-[10px] font-semibold tracking-[0.3em] text-zinc-500 uppercase"
+              className="max-w-[620px] font-serif text-[26px] leading-[1.25] text-white sm:text-[30px]"
             >
-              <span className="h-px w-8 bg-white/15" />
-              The short version
+              {site.about.lead}
             </motion.p>
 
-            {/* Lead — clean, one accent, no decoration */}
-            <motion.p
-              variants={fadeUp}
-              className="max-w-[620px] font-serif text-[28px] leading-[1.2] text-white sm:text-[32px]"
-            >
-              Staff frontend engineer,{" "}
-              <span className="relative font-semibold text-fuchsia-400 italic">
-                11+ years in.
-              </span>{" "}
-              <span className="text-zinc-400">Still genuinely excited about the work.</span>
-            </motion.p>
-
-            {/* Hairline divider */}
             <motion.div variants={fadeUp} className="mt-10 h-px w-full bg-white/10" />
 
-            {/* Chapter-numbered body paragraphs */}
             <div className="mt-10 space-y-7">
               {site.about.body.map((p, i) => (
                 <motion.div key={p} variants={fadeUp} className="grid grid-cols-[48px_1fr] gap-5">
@@ -151,16 +115,6 @@ export function AboutSection() {
               ))}
             </div>
 
-            {/* Signature — restrained */}
-            <motion.div
-              variants={fadeUp}
-              className="mt-10 flex items-center gap-3 font-serif text-base text-zinc-400 italic"
-            >
-              <span className="h-px w-10 bg-white/15" />
-              <span>— Amit</span>
-            </motion.div>
-
-            {/* Principles — quieter, no per-card decoration */}
             <motion.div variants={fadeUp} className="mt-14">
               <p className="mb-5 inline-flex items-center gap-3 font-mono text-[10px] font-semibold tracking-[0.3em] text-zinc-500 uppercase">
                 <span className="h-px w-8 bg-white/15" />
@@ -178,19 +132,9 @@ export function AboutSection() {
                         transition: { duration: 0.4, delay: i * 0.06 },
                       },
                     }}
-                    whileHover={{ y: -2 }}
-                    transition={{ type: "spring", stiffness: 220, damping: 22 }}
-                    className="group/pillar rounded-2xl border border-white/10 bg-white/3 p-5 transition-colors hover:border-white/20 hover:bg-white/5"
+                    className="rounded-2xl border border-white/10 bg-white/3 p-5"
                   >
-                    <div className="flex items-start justify-between">
-                      <span className="h-2 w-2 rounded-full bg-fuchsia-400/80 transition-transform duration-300 group-hover/pillar:scale-125" />
-                      <span
-                        aria-hidden
-                        className="font-mono text-[10px] text-zinc-500 tabular-nums"
-                      >
-                        {String(i + 1).padStart(2, "0")}
-                      </span>
-                    </div>
+                    <span className="h-2 w-2 rounded-full bg-fuchsia-400/80" aria-hidden />
                     <p className="font-display mt-4 text-[15px] leading-snug font-semibold text-white">
                       {pillar}
                     </p>
@@ -198,59 +142,8 @@ export function AboutSection() {
                 ))}
               </div>
             </motion.div>
-
-            {/* Skills — grouped, calmer */}
-            <motion.div variants={fadeUp} className="mt-14">
-              <p className="mb-5 inline-flex items-center gap-3 font-mono text-[10px] font-semibold tracking-[0.3em] text-zinc-500 uppercase">
-                <span className="h-px w-8 bg-white/15" />
-                Stack I reach for
-              </p>
-
-              <div className="space-y-5">
-                {skillGroups.map((group) => (
-                  <div
-                    key={group.label}
-                    className="grid items-start gap-3 sm:grid-cols-[112px_1fr]"
-                  >
-                    <div className="flex items-baseline gap-2 sm:pt-2">
-                      <span className="font-mono text-[11px] font-medium tracking-[0.18em] text-zinc-400 uppercase">
-                        {group.label}
-                      </span>
-                      <span className="font-mono text-[10px] text-zinc-500 tabular-nums">
-                        {group.skills.length}
-                      </span>
-                    </div>
-                    <motion.div
-                      variants={{
-                        hidden: {},
-                        show: { transition: { staggerChildren: 0.03 } },
-                      }}
-                      className="flex flex-wrap gap-2"
-                    >
-                      {group.skills.map((sk) => (
-                        <motion.span
-                          key={sk}
-                          variants={{
-                            hidden: { opacity: 0, y: 6 },
-                            show: {
-                              opacity: 1,
-                              y: 0,
-                              transition: { duration: 0.3 },
-                            },
-                          }}
-                          className="cursor-default rounded-full border border-white/10 bg-white/3 px-3 py-1 text-[12px] font-medium text-zinc-300 transition-colors hover:border-white/25 hover:bg-white/6 hover:text-white"
-                        >
-                          {sk}
-                        </motion.span>
-                      ))}
-                    </motion.div>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
           </motion.div>
 
-          {/* RIGHT COLUMN */}
           <motion.div
             variants={stagger}
             initial="hidden"
@@ -258,23 +151,10 @@ export function AboutSection() {
             viewport={{ once: true, margin: "-80px" }}
             className="lg:col-span-5"
           >
-            {/* Currently — glass panel raised off the section */}
             <motion.div
               variants={fadeUp}
-              whileHover={{ y: -2 }}
-              transition={{ type: "spring", stiffness: 220, damping: 22 }}
-              className="relative isolate overflow-hidden rounded-3xl border border-white/10 bg-white/3 p-8 text-zinc-200 shadow-[0_20px_60px_-30px_rgba(0,0,0,0.6)] backdrop-blur-sm"
+              className="relative isolate overflow-hidden rounded-3xl border border-white/10 bg-white/3 p-8 backdrop-blur-sm"
             >
-              <div
-                aria-hidden
-                className="pointer-events-none absolute -top-24 -right-24 h-56 w-56 rounded-full opacity-40 blur-3xl"
-                style={{
-                  background:
-                    "radial-gradient(closest-side, rgba(236,72,153,0.8), rgba(139,92,246,0.3), transparent)",
-                }}
-              />
-
-              {/* Header row */}
               <div className="relative flex items-center justify-between">
                 <p className="inline-flex items-center gap-2 font-mono text-[10px] font-semibold tracking-[0.24em] text-emerald-300 uppercase">
                   <span className="relative inline-flex h-2 w-2">
@@ -288,16 +168,14 @@ export function AboutSection() {
                 </p>
               </div>
 
-              {/* Lead line */}
               <div className="relative mt-7 flex items-start gap-3">
                 <Terminal className="mt-[9px] h-4 w-4 shrink-0 text-fuchsia-300" aria-hidden />
-                <p className="font-serif text-[24px] leading-[1.2] text-white">
-                  Leading frontend at <span className="text-fuchsia-300 italic">Axiamatic</span>,
-                  shipping Talos.
+                <p className="font-serif text-[22px] leading-[1.2] text-white">
+                  Staff Frontend Engineer at{" "}
+                  <span className="text-fuchsia-300 italic">Axiamatic</span>
                 </p>
               </div>
 
-              {/* Data rows */}
               <dl className="relative mt-7 divide-y divide-white/5 font-mono text-[12px]">
                 {nowRows.map((row) => (
                   <div
@@ -310,10 +188,9 @@ export function AboutSection() {
                 ))}
               </dl>
 
-              {/* Footer meta */}
               <div className="relative mt-7 flex items-center justify-between border-t border-white/10 pt-5">
                 <p className="font-mono text-[10px] tracking-[0.24em] text-zinc-500 uppercase">
-                  Open to collaborations
+                  Open to Staff / Principal roles
                 </p>
                 <a
                   href="#contact"
@@ -325,10 +202,9 @@ export function AboutSection() {
               </div>
             </motion.div>
 
-            {/* Education — quieter secondary card */}
             <motion.div
               variants={fadeUp}
-              className="mt-5 rounded-3xl border border-white/10 bg-white/2 p-6 backdrop-blur-sm"
+              className="mt-5 rounded-3xl border border-white/10 bg-white/2 p-6"
             >
               <div className="flex items-start gap-4">
                 <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-white/4 text-zinc-300">
@@ -346,6 +222,18 @@ export function AboutSection() {
                   </p>
                 </div>
               </div>
+            </motion.div>
+
+            <motion.div
+              variants={fadeUp}
+              className="mt-5 rounded-3xl border border-fuchsia-400/20 bg-fuchsia-400/5 p-6"
+            >
+              <p className="font-mono text-[10px] font-semibold tracking-[0.24em] text-fuchsia-300 uppercase">
+                {site.about.highlight.stat}
+              </p>
+              <p className="mt-2 text-sm leading-relaxed text-zinc-300">
+                {site.about.highlight.detail}
+              </p>
             </motion.div>
           </motion.div>
         </div>

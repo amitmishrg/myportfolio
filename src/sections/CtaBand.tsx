@@ -19,9 +19,11 @@ export function CtaBand() {
             <span className="font-serif text-base tracking-normal text-violet-300 italic">✦</span>
             Availability
           </p>
-          <h3 className="font-display max-w-2xl text-4xl leading-tight font-semibold text-white sm:text-5xl md:text-6xl">
-            Got a gnarly frontend problem?{" "}
-            <span className="font-serif text-zinc-400 italic">Let&apos;s make it boring.</span>
+          <h3 className="font-display max-w-2xl text-4xl leading-tight font-semibold text-white sm:text-5xl">
+            Building something ambitious?{" "}
+            <span className="font-serif text-zinc-400 italic">
+              Let&apos;s talk about frontend platform & AI product engineering.
+            </span>
           </h3>
         </div>
         <motion.a

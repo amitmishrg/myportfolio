@@ -1,5 +1,5 @@
 import { motion } from "framer-motion"
-import { ArrowUpRight, Gauge, Layers, Sparkles } from "lucide-react"
+import { ArrowUpRight, Layers, Sparkles, Terminal } from "lucide-react"
 
 import { SectionHeading } from "../components/ui/SectionHeading"
 import { SectionScan } from "../components/ui/SectionScan"
@@ -8,19 +8,20 @@ import { site, type ServiceIcon } from "../data/site"
 const icons: Record<ServiceIcon, React.ComponentType<{ className?: string }>> = {
   layers: Layers,
   sparkles: Sparkles,
-  gauge: Gauge,
+  terminal: Terminal,
 }
 
 export function ServicesSection() {
   return (
-    <section id="services" className="relative scroll-mt-28 overflow-hidden py-24 sm:py-32">
-      <SectionScan number="01" label="SERVICES" />
+    <section id="specialize" className="relative scroll-mt-28 overflow-hidden py-24 sm:py-32">
+      <SectionScan number="03" label="SPECIALIZE" />
       <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6">
         <SectionHeading
-          index="01"
-          eyebrow="Where I can help"
-          title="Three things I do"
-          titleAccent="really well"
+          index="03"
+          eyebrow="Where I create the most leverage"
+          title="What I"
+          titleAccent="specialize in"
+          align="left"
         />
 
         <motion.div
