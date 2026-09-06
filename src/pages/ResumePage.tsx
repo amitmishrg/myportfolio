@@ -174,20 +174,21 @@ function ContactCell({
   )
 }
 
-function SkillList({ title, items }: { title: string; items: ReadonlyArray<readonly [string, number]> }) {
+function SkillGroups() {
+  const groups = [
+    { title: "AI & Agent Engineering", skills: site.skills.aiAgent },
+    { title: "Frontend Architecture", skills: site.skills.frontendArch },
+    { title: "Platform & Infrastructure", skills: site.skills.platform },
+    { title: "Performance & Quality", skills: site.skills.perfQuality },
+  ]
   return (
-    <div className="resume-skill-col">
-      <div className="resume-skill-title">{title}</div>
-      <div className="resume-skill-list">
-        {items.map(([name, level]) => (
-          <div key={name} className="resume-skill-row">
-            <div className="resume-skill-name">{name}</div>
-            <div className="resume-skill-bar" aria-hidden>
-              <span className="resume-skill-fill" style={{ width: `${level}%` }} />
-            </div>
-          </div>
-        ))}
-      </div>
+    <div className="resume-skills-grid">
+      {groups.map((g) => (
+        <div key={g.title} className="resume-skill-col">
+          <div className="resume-skill-title">{g.title}</div>
+          <p className="resume-skill-inline">{g.skills.join(" · ")}</p>
+        </div>
+      ))}
     </div>
   )
 }
@@ -282,7 +283,7 @@ export function ResumePage() {
   }, [])
 
   const [job1, job2, job3] = site.experience
-  const { experienceMaxBullets, skills } = site.resume
+  const { experienceMaxBullets } = site.resume
 
   return (
     <div className="resume-root">
@@ -383,10 +384,7 @@ export function ResumePage() {
             <span className="resume-job-rule-grey" />
             <span className="resume-job-rule-accent" />
           </div>
-          <div className="resume-skills-grid">
-            <SkillList title={skills.left.title} items={skills.left.items} />
-            <SkillList title={skills.right.title} items={skills.right.items} />
-          </div>
+          <SkillGroups />
         </SectionRow>
 
         <SectionRow label="Open Source & Developer Tools">

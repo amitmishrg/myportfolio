@@ -552,11 +552,13 @@
   letter-spacing: 0.005em;
 }
 
-.resume-skill-list {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+.resume-skill-inline {
+  font-size: 9px;
+  line-height: 1.55;
+  color: var(--resume-zinc-600);
+  margin: 0;
 }
+
 
 .resume-skill-row {
   display: grid;

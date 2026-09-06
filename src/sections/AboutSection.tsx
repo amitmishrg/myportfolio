@@ -23,10 +23,10 @@ const stagger: Variants = {
 }
 
 const nowRows: { label: string; value: string }[] = [
-  { label: "Building", value: "Talos — agentic workspace" },
-  { label: "Shipping", value: "eng-os · AgenticLens · GhostCode" },
+  { label: "Building", value: "eng-os · AgenticLens" },
+  { label: "Shipping", value: "GhostCode · Talos platform work" },
   { label: "Stack", value: "React · TS · AI SDK · MCP" },
-  { label: "Focus", value: "Platform · perf · developer tools" },
+  { label: "Focus", value: "Streaming · platform · reliability" },
 ]
 
 function useBangaloreTime() {
@@ -190,7 +190,7 @@ export function AboutSection() {
 
               <div className="relative mt-7 flex items-center justify-between border-t border-white/10 pt-5">
                 <p className="font-mono text-[10px] tracking-[0.24em] text-zinc-500 uppercase">
-                  Open to Staff / Principal roles
+                  Open to Staff+ / Principal roles
                 </p>
                 <a
                   href="#contact"

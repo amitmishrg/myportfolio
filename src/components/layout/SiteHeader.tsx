@@ -8,7 +8,7 @@ import { cn } from "../../lib/cn"
 const links = [
   { href: "#impact", label: "Impact" },
   { href: "#specialize", label: "Specialize" },
-  { href: "#axiamatic", label: "Work" },
+  { href: "#case-studies", label: "Case studies" },
   { href: "#open-source", label: "Open source" },
   { href: "#experience", label: "Experience" },
   { href: "#contact", label: "Contact" },

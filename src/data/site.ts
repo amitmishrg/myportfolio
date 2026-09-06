@@ -21,9 +21,11 @@ export const site = {
     lastName: "Mishra",
     headline: "Building AI-native products, frontend platforms, and developer tools.",
     subline:
-      "Staff Frontend Engineer with 11+ years turning ambiguous product problems into durable frontend architecture — from agentic interfaces and streaming systems to design systems, developer experience, performance, and reliability.",
+      "Staff Frontend Engineer with 12+ years turning ambiguous product problems into durable frontend architecture — from agentic interfaces and streaming systems to design systems, performance, reliability, and developer tooling.",
     roleTag: "Staff Frontend Engineer",
   },
+  availability: "Open to Staff+ / Principal Frontend & Platform roles",
+  yearsExperience: "12+",
   marquee: [
     "FRONTEND PLATFORM",
     "AI-NATIVE PRODUCTS",
@@ -66,7 +68,7 @@ export const site = {
     "SSE",
   ],
   impact: [
-    { label: "Years engineering", value: "11+", detail: "Production frontend systems" },
+    { label: "Years engineering", value: "12+", detail: "Production frontend systems" },
     { label: "FCP improvement", value: "4.1s → 0.8s", detail: "Axiamatic perf program" },
     { label: "LCP improvement", value: "5.6s → 2.1s", detail: "Axiamatic perf program" },
     { label: "Heap reduction", value: "2.5 → 1.3 GB", detail: "Long-lived Talos sessions" },
@@ -77,23 +79,23 @@ export const site = {
     {
       title: "AI-Native Product Engineering",
       description:
-        "Designing production-grade interfaces around agents, streaming execution, tools, artifacts, approvals, and real-time state.",
+        "Agentic interfaces, streaming execution, tools, artifacts, approvals, and real-time state.",
       capabilities: [
         "Talos agentic workspace",
-        "Streaming & artifact UX",
+        "Execution-oriented streaming",
         "Vercel AI SDK · Claude Agent SDK",
       ],
       proof: { label: "Talos @ Axiamatic", href: "#axiamatic" },
       icon: "sparkles" as const,
     },
     {
-      title: "Platform & Architecture",
+      title: "Frontend Platform & Architecture",
       description:
-        "Building reusable frontend foundations that make complex products consistent, scalable, accessible, performant, and easier to evolve.",
+        "Reusable frontend foundations, design systems, micro-frontends, performance, reliability, and engineering standards.",
       capabilities: [
         "Design systems & MCP",
-        "Micro-frontends & shared patterns",
-        "Performance programs",
+        "Micro-frontends",
+        "Performance & reliability",
       ],
       proof: { label: "Axm Design System MCP", href: "#case-studies" },
       icon: "layers" as const,
@@ -101,7 +103,7 @@ export const site = {
     {
       title: "Developer Tools & AI-Assisted Engineering",
       description:
-        "Building tools and systems that improve how engineers build, debug, and work with AI coding agents.",
+        "Tools and systems that improve how engineers build, debug, and work with coding agents.",
       capabilities: ["eng-os", "AgenticLens", "GhostCode", "WebMCP"],
       proof: { label: "Open source", href: "#open-source" },
       icon: "terminal" as const,
@@ -109,7 +111,7 @@ export const site = {
   ],
   axiamatic: {
     intro:
-      "Leading frontend architecture for AI-native products at Axiamatic, with a focus on agentic interfaces, streaming systems, design systems, performance, and developer experience.",
+      "Leading frontend architecture for AI-native products at Axiamatic — reusable patterns, engineering standards, and platform work across Talos, streaming systems, design-system MCP, performance, and reliability.",
     highlights: [
       {
         title: "Talos — agentic workspace",
@@ -120,31 +122,31 @@ export const site = {
       {
         title: "AI SDK streaming migration",
         description:
-          "Migrated the real-time agent experience onto the AI SDK streaming framework, establishing a more durable streaming boundary between agent execution and the browser.",
+          "Migrated the real-time agent experience to an AI SDK streaming architecture, establishing a durable streaming boundary between agent execution and the browser.",
         tags: ["Vercel AI SDK", "SSE", "Streaming"],
       },
       {
         title: "Frontend performance program",
         description:
-          "Led the Axiamatic frontend performance program, establishing measurable baselines and driving improvements across loading and rendering performance: FCP 4.1s → 0.8s, LCP 5.6s → 2.1s, and DOMContentLoaded 4s → 340ms.",
+          "Led the frontend performance program using measurable baselines, targeted remediation, and validation across Core Web Vitals: FCP 4.1s → 0.8s, LCP 5.6s → 2.1s, DOMContentLoaded 4s → 340ms.",
         tags: ["Core Web Vitals", "Lighthouse", "RUM"],
       },
       {
         title: "Memory & reliability",
         description:
-          "Diagnosed and eliminated memory growth in long-lived Talos agent sessions (up to 90 minutes of continuous agentic work), reducing heap usage from 2.5 GB → 1.3 GB and external buffers from 483 MB → 167 MB, eliminating OOM-triggered restarts.",
+          "Diagnosed memory growth in long-lived Talos agent sessions using heap and external-memory profiling, reducing heap from 2.5 GB to 1.3 GB and external buffers from 483 MB to 167 MB, eliminating OOM-triggered restarts.",
         tags: ["Heap profiling", "DevTools", "Reliability"],
       },
       {
         title: "Axm Design System MCP",
         description:
-          "Designed the Axm Design System MCP, turning design tokens and component knowledge into an LLM-callable capability so agent-generated UI follows the product's design system by default.",
+          "Designed Axm Design System MCP, turning design tokens and component knowledge into an AI-callable capability so generated UI follows the product design system by default.",
         tags: ["MCP", "Design Systems", "AI UX"],
       },
       {
         title: "Architecture & leadership",
         description:
-          "Led frontend architecture, code reviews, and design-pattern work while mentoring engineers and raising frontend engineering standards across the team.",
+          "Led frontend architecture, established reusable patterns and engineering standards, mentored 5+ engineers, and drove architecture and code reviews across the frontend stack.",
         tags: ["Architecture", "Mentorship", "Code review"],
       },
     ],
@@ -160,7 +162,7 @@ export const site = {
         {
           heading: "Problem",
           body:
-            "Axiamatic customers needed a product-native AI experience. Bouncing between external chat tools and the ERP broke workflow continuity and made agent-generated work hard to trust inside the product.",
+            "Product-native AI was needed inside the existing ERP workflow — not a separate chat experience that broke context when users left the product shell.",
         },
         {
           heading: "Constraints",
@@ -198,14 +200,19 @@ export const site = {
             "Customer-facing UI had grown fast: FCP 4.1s, LCP 5.6s, DOMContentLoaded 4s. Sales demos on unreliable networks were surfacing the problem.",
         },
         {
-          heading: "Approach",
+          heading: "Diagnose",
           body:
-            "Week of real-user monitoring and Lighthouse CI baselines before touching code. For each metric, identified the single biggest contributor — critical render path, JS diet, image pipeline, third-party deferral.",
+            "Established real-user monitoring and Lighthouse CI baselines before changing code. For each metric, traced the dominant contributor — critical render path, JS payload, image pipeline, third-party scripts.",
         },
         {
-          heading: "Results",
+          heading: "Remediate",
           body:
-            "FCP 4.1s → 0.8s (−80%), LCP 5.6s → 2.1s (−63%), DOMContentLoaded 4s → 340ms (−91%). Established perf budgets in CI so regressions block merge.",
+            "Addressed the highest-impact bottlenecks per metric: render-path slimming, JS diet, image pipeline fixes, and third-party deferral. Set perf budgets in CI so regressions block merge.",
+        },
+        {
+          heading: "Validate",
+          body:
+            "FCP 4.1s → 0.8s, LCP 5.6s → 2.1s, DOMContentLoaded 4s → 340ms — measured again under the same RUM and Lighthouse baselines.",
         },
       ],
       tags: ["FCP", "LCP", "CWV", "Lighthouse", "RUM"],
@@ -215,7 +222,7 @@ export const site = {
       title: "Making the design system consumable by AI",
       subtitle: "Axm Design System MCP · Axiamatic",
       summary:
-        "Turned design tokens and component knowledge into an LLM-callable MCP capability — so agent-generated UI follows the product design system by default.",
+        "Designed Axm Design System MCP — design tokens and component knowledge exposed to AI so generated UI follows the product design system by default.",
       sections: [
         {
           heading: "Problem",
@@ -230,7 +237,7 @@ export const site = {
         {
           heading: "Outcome",
           body:
-            "Agent-generated UI follows the same design constraints as human-generated UI. Design drift bugs dropped; first-try on-brand artifact rate became the default.",
+            "Generated UI follows the same design constraints as hand-built product UI. Design drift from agent artifacts dropped as a recurring issue.",
         },
       ],
       tags: ["MCP", "Design Systems", "Tokens", "AI UX"],
@@ -238,13 +245,12 @@ export const site = {
   ],
   about: {
     title: "About",
-    lead:
-      "I build frontend systems at the intersection of product engineering, platform architecture, and AI.",
+    lead: "I build frontend systems for complex products.",
     body: [
-      "Over 11+ years, I've worked from large-scale web applications to AI-native interfaces, developer tooling, design systems, and performance engineering.",
-      "At Axiamatic I lead frontend architecture for Talos — an agentic workspace with artifact generation, design mode, and live previews — plus the Axm Design System MCP and a frontend performance program that moved real Core Web Vitals numbers.",
-      "Before that, nearly six years at Media.Net (Directi) on publisher-facing dashboards, a Next.js migration, and a CWV program that took FCP from 5.1s to 0.2s.",
-      "The thread running through all of it: durable architecture, measurable impact, and caring about the person who reads the code next.",
+      "Twelve years in large-scale frontend — from publisher dashboards at Media.Net to AI-native products and developer tooling at Axiamatic.",
+      "The work I care about: durable architecture, measurable performance and reliability, and platform capabilities that make the right path the easiest path for other engineers.",
+      "Before Axiamatic, nearly six years on publisher-facing React apps — a Next.js migration and a CWV program that took FCP from 5.1s to 0.2s.",
+      "Every system has constraints. The job is to make trade-offs visible, defensible, and reversible.",
     ],
     highlight: {
       stat: "CWV",
@@ -252,13 +258,13 @@ export const site = {
         "Led the perf program on the Pub dashboard at Media.Net — a publisher-facing tool inside one of the open web's largest SSPs. FCP 5.1s → 0.2s, LCP 13.7s → 3.2s.",
     },
     pillars: [
-      "Frontend architecture & platform engineering",
       "AI-native product engineering",
+      "Frontend platform & architecture",
       "Developer tools & open source",
     ],
   },
   stats: [
-    { label: "Years in frontend", value: 11, suffix: "+" },
+    { label: "Years in frontend", value: 12, suffix: "+" },
     { label: "Engineers mentored", value: 8, suffix: "+" },
     { label: "GitHub stars (code-resume)", value: 300, suffix: "+" },
     { label: "Shipping since", text: "2014" },
@@ -270,15 +276,14 @@ export const site = {
       location: "Bangalore",
       range: "Nov 2022 — Present",
       summary:
-        "Leading frontend architecture for AI-native products — Talos agentic workspace, Axm Design System MCP, streaming systems, performance, and developer experience.",
+        "Leading frontend architecture for AI-native products — Talos, streaming systems, design-system MCP, performance, and reliability. Own architecture reviews, code reviews, and mentoring.",
       highlights: [
-        "Architected Talos — agentic workspace with artifact generation, design mode, live previews, and micro-frontend integration; shipping in every Axiamatic customer workspace.",
-        "Designed streaming architecture around long-lived agent executions, supporting reconnectable multi-chat experiences.",
-        "Migrated the real-time agent experience onto the AI SDK streaming framework, establishing a durable boundary between agent execution and the browser.",
-        "Led the frontend performance program: FCP 4.1s → 0.8s, LCP 5.6s → 2.1s, DOMContentLoaded 4s → 340ms.",
-        "Designed the Axm Design System MCP — LLM-callable design-system capability for on-brand agent-generated UI.",
-        "Diagnosed memory growth in long-lived sessions — heap 2.5 GB → 1.3 GB, external buffers 483 MB → 167 MB; eliminated OOM-triggered restarts.",
-        "Led frontend architecture, code reviews, and design-pattern work while mentoring 5+ engineers.",
+        "Architected Talos — agentic workspace with long-lived executions, reconnectable multi-chat, execution-oriented streaming, artifacts, design mode, live previews, and micro-frontend integration; ships in every tenant.",
+        "Migrated the real-time agent experience to an AI SDK streaming architecture, establishing a durable streaming boundary between agent execution and the browser.",
+        "Led the frontend performance program using measurable baselines, targeted remediation, and validation across Core Web Vitals: FCP 4.1s → 0.8s, LCP 5.6s → 2.1s, DOMContentLoaded 4s → 340ms.",
+        "Diagnosed memory growth in long-lived Talos agent sessions using heap and external-memory profiling, reducing heap from 2.5 GB to 1.3 GB and external buffers from 483 MB to 167 MB; eliminated OOM-triggered restarts.",
+        "Designed Axm Design System MCP, turning design tokens and component knowledge into an AI-callable capability so generated UI follows the product design system by default.",
+        "Led frontend architecture, established reusable patterns and engineering standards, mentored 5+ engineers, and drove architecture and code reviews across the frontend stack.",
       ],
       tags: ["Talos", "AI SDK", "MCP", "Performance", "Architecture"],
       featured: true,
@@ -339,7 +344,7 @@ export const site = {
       "Design Systems",
       "Micro-frontends",
     ],
-    platform: ["Node.js", "Redis", "AWS", "Vite", "Webpack", "CI/CD"],
+    platform: ["Node.js", "Redis", "Vite", "Webpack", "AWS", "Docker", "CI/CD"],
     perfQuality: [
       "Core Web Vitals",
       "Chrome DevTools",
@@ -384,20 +389,8 @@ export const site = {
   ],
   openSource: {
     blurb:
-      "Open-source engineering at the intersection of AI developer tools, agent observability, and developer experience — not side projects, but systems I use and extend.",
+      "Open-source tools for agent observability, engineering workflows, and developer experience.",
     featured: [
-      {
-        name: "eng-os",
-        category: "Open Source · AI Developer Tools",
-        tagline: "Engineering OS for AI-assisted development",
-        description:
-          "A portable engineering kit for AI-assisted development that packages reusable engineering workflows, project knowledge, skills, memory, and adapters into a repeatable development system.",
-        href: "https://github.com/amitmishrg/eng-os",
-        github: "https://github.com/amitmishrg/eng-os",
-        live: null,
-        meta: { label: "GitHub", kind: "repo" as const },
-        tags: ["AI Agents", "CLI", "Developer Experience", "Engineering Workflows"],
-      },
       {
         name: "AgenticLens",
         category: "AI Observability · Developer Tools",
@@ -411,11 +404,23 @@ export const site = {
         tags: ["AI Observability", "Agent Workflows", "Claude SDK", "Developer Tools"],
       },
       {
+        name: "eng-os",
+        category: "Open Source · AI Developer Tools",
+        tagline: "Engineering OS for AI-assisted development",
+        description:
+          "Portable engineering workflows for AI-assisted development, combining project knowledge, skills, memory, and reusable development patterns.",
+        href: "https://github.com/amitmishrg/eng-os",
+        github: "https://github.com/amitmishrg/eng-os",
+        live: null,
+        meta: { label: "GitHub", kind: "repo" as const },
+        tags: ["AI Agents", "CLI", "Developer Experience", "Engineering Workflows"],
+      },
+      {
         name: "GhostCode",
         category: "Open Source · Coding Agents",
         tagline: "Local-first coding-agent harness",
         description:
-          "An open-source local-first coding-agent harness for exploring how AI coding agents work — agent loops, tool execution, PLAN/BUILD modes, session persistence, and model providers.",
+          "Local-first coding-agent harness exploring agent loops, tool execution, planning, model providers, and session persistence.",
         href: "https://github.com/amitmishrg/ghostcode",
         github: "https://github.com/amitmishrg/ghostcode",
         live: null,
@@ -456,14 +461,14 @@ export const site = {
   contact: {
     title: "Say hi",
     subtitle:
-      "Building something ambitious? Looking for a Staff frontend engineer working at the intersection of AI, product engineering, and frontend architecture? Let's talk.",
+      "Working on AI-native products, frontend platform architecture, or developer tooling? Get in touch.",
     serviceTags: [
       "AI-native product UI",
       "Frontend platform",
       "Developer tools",
       "Design systems",
       "Performance",
-      "Staff / Principal roles",
+      "Staff+ / Principal roles",
     ],
   },
   assets: {
@@ -473,42 +478,16 @@ export const site = {
   },
   resume: {
     profile:
-      "Staff Frontend Engineer with 11+ years building AI-native products, scalable web platforms, and developer tooling. I specialize in durable frontend architecture — from agentic interfaces and streaming systems to design systems, developer experience, performance, and reliability. Currently leading Talos at Axiamatic: an agentic workspace with artifact generation, design mode, and live previews, shipping in every tenant.",
+      "Staff Frontend Engineer with 12+ years building AI-native products, frontend platforms, and developer tooling. Led Talos at Axiamatic — execution-oriented streaming, artifacts, micro-frontends, and design-system MCP integration — shipping in every tenant.",
     taglineTerms: ["AI Products", "Platform", "Developer Tools"] as const,
     taglineAccent: "AI Products",
     openSourceNames: [
-      "eng-os",
       "AgenticLens",
+      "eng-os",
       "GhostCode",
       "WebMCP ShopQuick",
       "code-resume",
     ] as const,
-    skills: {
-      left: {
-        title: "AI & agent engineering",
-        items: [
-          ["Claude Agent SDK", 90],
-          ["Vercel AI SDK", 85],
-          ["MCP", 85],
-          ["React", 90],
-          ["TypeScript", 85],
-          ["Next.js", 85],
-          ["Design Systems", 88],
-        ],
-      },
-      right: {
-        title: "Platform, architecture & perf",
-        items: [
-          ["Micro-frontends", 82],
-          ["React Query / SWR", 85],
-          ["Streaming / SSE", 88],
-          ["Core Web Vitals", 90],
-          ["Lighthouse / DevTools", 90],
-          ["React Testing Library", 82],
-          ["Playwright", 80],
-        ],
-      },
-    },
     experienceMaxBullets: { axiamatic: 6, medianet: 4, earlier: 3 },
   },
 } as const

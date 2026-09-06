@@ -13,7 +13,7 @@ export function ExperienceSection() {
         <SectionHeading
           index="07"
           eyebrow="Career"
-          title="11+ years,"
+          title={`${site.yearsExperience} years,`}
           titleAccent="one craft"
           align="left"
         />

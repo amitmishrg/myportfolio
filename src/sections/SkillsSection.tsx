@@ -5,10 +5,10 @@ import { SectionScan } from "../components/ui/SectionScan"
 import { site } from "../data/site"
 
 const groups = [
-  { key: "aiAgent" as const, label: "AI & agent engineering" },
-  { key: "frontendArch" as const, label: "Frontend architecture" },
-  { key: "platform" as const, label: "Platform & infrastructure" },
-  { key: "perfQuality" as const, label: "Performance & quality" },
+  { key: "aiAgent" as const, label: "AI & Agent Engineering" },
+  { key: "frontendArch" as const, label: "Frontend Architecture" },
+  { key: "platform" as const, label: "Platform & Infrastructure" },
+  { key: "perfQuality" as const, label: "Performance & Quality" },
 ]
 
 export function SkillsSection() {

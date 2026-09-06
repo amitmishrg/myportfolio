@@ -65,9 +65,7 @@ export function HeroSection() {
 
           <motion.div {...fade(0.2)} className="mt-6 flex items-center gap-3">
             <PulseRings />
-            <span className="text-sm text-zinc-400">
-              Available for Staff & Principal frontend roles
-            </span>
+            <span className="text-sm text-zinc-400">{site.availability}</span>
           </motion.div>
 
           <motion.p
@@ -219,7 +217,7 @@ export function HeroSection() {
                 transition={{ duration: 0.6, delay: 1 }}
                 className="bg-canvas/90 absolute right-4 -bottom-4 rounded-2xl border border-white/10 px-4 py-3 text-xs text-zinc-200 backdrop-blur"
               >
-                <p className="font-semibold text-white">11+ years</p>
+                <p className="font-semibold text-white">{site.yearsExperience} years</p>
                 <p className="text-[11px] text-zinc-500">Shipping at scale</p>
               </motion.div>
             </div>

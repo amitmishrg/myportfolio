@@ -18,7 +18,7 @@ export function ServicesSection() {
       <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6">
         <SectionHeading
           index="03"
-          eyebrow="Where I create the most leverage"
+          eyebrow="Core strengths"
           title="What I"
           titleAccent="specialize in"
           align="left"
