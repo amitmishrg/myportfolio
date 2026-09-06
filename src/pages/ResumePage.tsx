@@ -357,7 +357,7 @@ export function ResumePage() {
           label="Address"
           labelExtra={
             <div className="resume-address">
-              <div>Bangalore,</div>
+              <div>Bengaluru,</div>
               <div>Karnataka, India</div>
             </div>
           }

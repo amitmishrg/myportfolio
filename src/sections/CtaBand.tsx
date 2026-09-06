@@ -20,10 +20,8 @@ export function CtaBand() {
             Availability
           </p>
           <h3 className="font-display max-w-2xl text-4xl leading-tight font-semibold text-white sm:text-5xl">
-            Building something ambitious?{" "}
-            <span className="font-serif text-zinc-400 italic">
-              Let&apos;s talk about frontend platform & AI product engineering.
-            </span>
+            Working on an AI-native product or frontend platform?{" "}
+            <span className="font-serif text-zinc-400 italic">Let&apos;s talk.</span>
           </h3>
         </div>
         <motion.a

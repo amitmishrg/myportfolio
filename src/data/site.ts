@@ -5,7 +5,7 @@ export const site = {
   name: "Amit Mishra",
   role: "Staff Frontend Engineer",
   tagline: "AI Products · Platform · Developer Tools",
-  location: "Bangalore, India",
+  location: "Bengaluru, India",
   email: "amitmishra009v@gmail.com",
   phone: "+91 88021 00560",
   url: "https://amitmishrg.in",
@@ -21,7 +21,7 @@ export const site = {
     lastName: "Mishra",
     headline: "Building AI-native products, frontend platforms, and developer tools.",
     subline:
-      "Staff Frontend Engineer with 12+ years turning ambiguous product problems into durable frontend architecture — from agentic interfaces and streaming systems to design systems, performance, reliability, and developer tooling.",
+      "Staff Frontend Engineer with 12+ years turning ambiguous product problems into frontend systems — from agentic interfaces and streaming to design systems, performance, reliability, and developer tooling.",
     roleTag: "Staff Frontend Engineer",
   },
   availability: "Open to Staff+ / Principal Frontend & Platform roles",
@@ -72,8 +72,7 @@ export const site = {
     { label: "FCP improvement", value: "4.1s → 0.8s", detail: "Axiamatic perf program" },
     { label: "LCP improvement", value: "5.6s → 2.1s", detail: "Axiamatic perf program" },
     { label: "Heap reduction", value: "2.5 → 1.3 GB", detail: "Long-lived Talos sessions" },
-    { label: "code-resume", value: "300+", detail: "GitHub stars" },
-    { label: "Public repos", value: "55", detail: "Open source on GitHub" },
+    { label: "code-resume", value: "313", detail: "GitHub stars" },
   ],
   services: [
     {
@@ -91,7 +90,7 @@ export const site = {
     {
       title: "Frontend Platform & Architecture",
       description:
-        "Reusable frontend foundations, design systems, micro-frontends, performance, reliability, and engineering standards.",
+        "Design systems, micro-frontends, performance, reliability, and shared patterns across product surfaces.",
       capabilities: [
         "Design systems & MCP",
         "Micro-frontends",
@@ -101,7 +100,7 @@ export const site = {
       icon: "layers" as const,
     },
     {
-      title: "Developer Tools & AI-Assisted Engineering",
+      title: "Developer Tools & Engineering Systems",
       description:
         "Tools and systems that improve how engineers build, debug, and work with coding agents.",
       capabilities: ["eng-os", "AgenticLens", "GhostCode", "WebMCP"],
@@ -111,7 +110,7 @@ export const site = {
   ],
   axiamatic: {
     intro:
-      "Leading frontend architecture for AI-native products at Axiamatic — reusable patterns, engineering standards, and platform work across Talos, streaming systems, design-system MCP, performance, and reliability.",
+      "Leading frontend at Axiamatic — patterns and standards across Talos, streaming, design-system MCP, performance, and reliability.",
     highlights: [
       {
         title: "Talos — agentic workspace",
@@ -146,7 +145,7 @@ export const site = {
       {
         title: "Architecture & leadership",
         description:
-          "Led frontend architecture, established reusable patterns and engineering standards, mentored 5+ engineers, and drove architecture and code reviews across the frontend stack.",
+          "Established frontend architecture patterns and engineering standards used across the product. Mentored 5+ engineers; provided architecture guidance and reviews across the frontend stack.",
         tags: ["Architecture", "Mentorship", "Code review"],
       },
     ],
@@ -182,7 +181,7 @@ export const site = {
         {
           heading: "Outcome",
           body:
-            "Talos ships in every tenant as the default AI surface — with artifact generation, design mode, live previews, and sessions that sustain up to 90 minutes of continuous agentic work.",
+            "Talos ships in every tenant as the default AI surface — with artifact generation, design mode, live previews, and sessions supporting up to 90 minutes of continuous agentic work without tying execution lifetime to a browser connection.",
         },
       ],
       tags: ["Talos", "Streaming", "Artifacts", "Micro-frontend", "MCP"],
@@ -248,7 +247,7 @@ export const site = {
     lead: "I build frontend systems for complex products.",
     body: [
       "Twelve years in large-scale frontend — from publisher dashboards at Media.Net to AI-native products and developer tooling at Axiamatic.",
-      "The work I care about: durable architecture, measurable performance and reliability, and platform capabilities that make the right path the easiest path for other engineers.",
+      "I care about systems that hold up in production, measurable performance and reliability, and tooling that shortens the path for other engineers.",
       "Before Axiamatic, nearly six years on publisher-facing React apps — a Next.js migration and a CWV program that took FCP from 5.1s to 0.2s.",
       "Every system has constraints. The job is to make trade-offs visible, defensible, and reversible.",
     ],
@@ -266,24 +265,24 @@ export const site = {
   stats: [
     { label: "Years in frontend", value: 12, suffix: "+" },
     { label: "Engineers mentored", value: 8, suffix: "+" },
-    { label: "GitHub stars (code-resume)", value: 300, suffix: "+" },
+    { label: "GitHub stars (code-resume)", value: 313, suffix: "" },
     { label: "Shipping since", text: "2014" },
   ],
   experience: [
     {
       company: "Axiamatic",
       role: "Staff Engineer — Frontend",
-      location: "Bangalore",
+      location: "Bengaluru",
       range: "Nov 2022 — Present",
       summary:
-        "Leading frontend architecture for AI-native products — Talos, streaming systems, design-system MCP, performance, and reliability. Own architecture reviews, code reviews, and mentoring.",
+        "Leading frontend at Axiamatic — Talos, streaming, design-system MCP, performance, and reliability. Established patterns and standards across the product; architecture reviews, code reviews, and mentoring.",
       highlights: [
-        "Architected Talos — agentic workspace with long-lived executions, reconnectable multi-chat, execution-oriented streaming, artifacts, design mode, live previews, and micro-frontend integration; ships in every tenant.",
+        "Architected Talos — agentic workspace shipping in every tenant; long-lived executions, reconnectable multi-chat, execution-oriented streaming, artifacts, design mode, live previews, and micro-frontends; sessions up to 90 minutes of continuous agentic work.",
         "Migrated the real-time agent experience to an AI SDK streaming architecture, establishing a durable streaming boundary between agent execution and the browser.",
         "Led the frontend performance program using measurable baselines, targeted remediation, and validation across Core Web Vitals: FCP 4.1s → 0.8s, LCP 5.6s → 2.1s, DOMContentLoaded 4s → 340ms.",
         "Diagnosed memory growth in long-lived Talos agent sessions using heap and external-memory profiling, reducing heap from 2.5 GB to 1.3 GB and external buffers from 483 MB to 167 MB; eliminated OOM-triggered restarts.",
         "Designed Axm Design System MCP, turning design tokens and component knowledge into an AI-callable capability so generated UI follows the product design system by default.",
-        "Led frontend architecture, established reusable patterns and engineering standards, mentored 5+ engineers, and drove architecture and code reviews across the frontend stack.",
+        "Established frontend architecture patterns and engineering standards used across the product; mentored 5+ engineers; provided architecture guidance and reviews across the frontend stack.",
       ],
       tags: ["Talos", "AI SDK", "MCP", "Performance", "Architecture"],
       featured: true,
@@ -291,7 +290,7 @@ export const site = {
     {
       company: "Media.Net (Directi)",
       role: "Senior Web Application Developer — Module Lead",
-      location: "Bangalore",
+      location: "Bengaluru",
       range: "Jan 2017 — Nov 2022",
       summary:
         "Nearly six years on large React/Redux apps. Led a Next.js migration, built the Pub Ad-Quality dashboard, and ran the Core Web Vitals program.",
@@ -460,8 +459,7 @@ export const site = {
   },
   contact: {
     title: "Say hi",
-    subtitle:
-      "Working on AI-native products, frontend platform architecture, or developer tooling? Get in touch.",
+    subtitle: "Working on an AI-native product or frontend platform? Let's talk.",
     serviceTags: [
       "AI-native product UI",
       "Frontend platform",
@@ -478,7 +476,7 @@ export const site = {
   },
   resume: {
     profile:
-      "Staff Frontend Engineer with 12+ years building AI-native products, frontend platforms, and developer tooling. Led Talos at Axiamatic — execution-oriented streaming, artifacts, micro-frontends, and design-system MCP integration — shipping in every tenant.",
+      "Staff Frontend Engineer with 12+ years building AI-native products, frontend platforms, and developer tooling. Led Talos at Axiamatic — execution-oriented streaming, artifacts, micro-frontends, design-system MCP — shipping in every tenant; sessions up to 90 minutes of continuous agentic work.",
     taglineTerms: ["AI Products", "Platform", "Developer Tools"] as const,
     taglineAccent: "AI Products",
     openSourceNames: [
