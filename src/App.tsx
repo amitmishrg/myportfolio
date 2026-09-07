@@ -3,6 +3,7 @@ import { GradientMesh } from "./components/layout/GradientMesh"
 import { HeaderSpacer, SiteHeader } from "./components/layout/SiteHeader"
 import { SiteFooter } from "./components/layout/SiteFooter"
 import { SmoothScroll } from "./components/layout/SmoothScroll"
+import { VercelAnalytics } from "./components/layout/VercelAnalytics"
 import { AboutSection } from "./sections/AboutSection"
 import { AxiamaticSection } from "./sections/AxiamaticSection"
 import { CaseStudiesSection } from "./sections/CaseStudiesSection"
@@ -21,33 +22,38 @@ import { ResumePage } from "./pages/ResumePage"
 
 export default function App() {
   const pathname = typeof window !== "undefined" ? window.location.pathname : "/"
-  if (pathname === "/resume" || pathname === "/resume/") {
-    return <ResumePage />
-  }
+  const isResume = pathname === "/resume" || pathname === "/resume/"
 
   return (
-    <SmoothScroll>
-      <CustomCursor />
-      <GradientMesh />
-      <SiteHeader />
-      <HeaderSpacer />
-      <main>
-        <HeroSection />
-        <MarqueeSection />
-        <ImpactSection />
-        <ServicesSection />
-        <PortfolioSection />
-        <AxiamaticSection />
-        <CaseStudiesSection />
-        <OpenSourceSection />
-        <ExperienceSection />
-        <SkillsSection />
-        <AboutSection />
-        <QuoteSection />
-        <CtaBand />
-        <ContactSection />
-      </main>
-      <SiteFooter />
-    </SmoothScroll>
+    <>
+      <VercelAnalytics />
+      {isResume ? (
+        <ResumePage />
+      ) : (
+        <SmoothScroll>
+          <CustomCursor />
+          <GradientMesh />
+          <SiteHeader />
+          <HeaderSpacer />
+          <main>
+            <HeroSection />
+            <MarqueeSection />
+            <ImpactSection />
+            <ServicesSection />
+            <PortfolioSection />
+            <AxiamaticSection />
+            <CaseStudiesSection />
+            <OpenSourceSection />
+            <ExperienceSection />
+            <SkillsSection />
+            <AboutSection />
+            <QuoteSection />
+            <CtaBand />
+            <ContactSection />
+          </main>
+          <SiteFooter />
+        </SmoothScroll>
+      )}
+    </>
   )
 }
